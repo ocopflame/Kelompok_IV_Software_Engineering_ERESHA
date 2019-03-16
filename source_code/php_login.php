@@ -1,3 +1,9 @@
+===========================================
+= Nama User       : RaRizal123             =
+= Nama Mahasiswa  : Rachmad Rizal          =
+= NIM             : 181022000003           =
+===========================================
+
 <?php
 $host       = "localhost";
 $user       = "root";
