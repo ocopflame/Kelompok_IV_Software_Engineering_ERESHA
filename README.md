@@ -16,8 +16,8 @@ Project ini lebih mengutamakan ke arah dokumentasi.
 
 PEMBUAT
 
-NO    NAMA                          NIP             E-MAIL
-1.    Arief Rachman Andhika         181022000006    arief.rachmanandhika@gmail.com
+NO    NAMA                          NIP             
+1.    Arief Rachman Andhika         181022000006    
 2.    Rachmad Rizal                 181022000003
 3.
 4.
