@@ -15,7 +15,7 @@ Project ini lebih mengutamakan ke arah dokumentasi.
 PEMBUAT
 NO    NAMA                          NIP   
 1.    Arief Rachman Andhika         181022000006
-2.
+2.    Rachmad Rizal                 181022000003
 3.
 4.
 5.
