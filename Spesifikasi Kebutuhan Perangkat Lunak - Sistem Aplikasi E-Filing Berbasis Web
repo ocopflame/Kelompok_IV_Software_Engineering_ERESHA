@@ -58,22 +58,24 @@ adalah standar untuk memodelkan sistem perangkat lunak
 …
 
 1.3	Target Audiens
-Pengguna dari dokumen ini adalah pengembang perangkat lunak Sistem Informasi Pengarsipan dan pengguna (user) dari perangkat lunak 
-atau personil-personil yang terlibat dalam sistem. 
+Pengguna dari dokumen ini adalah pengembang perangkat lunak Sistem Aplikasi E-Filing dan pengguna (user) dari perangkat
+lunak atau personil-personil yang terlibat dalam sistem. 
 
 1.4	Ruang Lingkup Perangkat Lunak
-Sistem Informasi Pengarsipan adalah sistem terkomputerisasi yang mengelola pengarsipan dokumen dalam bentuk data sistem, dalam 
-melakukan operasi sehari-hari Sistem Informasi Pengarsipan ini merupakan perangkat lunak berbasis web yang diakses untuk menjalankan
+Sistem Aplikasi E-Filing adalah sistem terkomputerisasi yang mengelola pengarsipan dokumen dalam bentuk data sistem, dalam 
+melakukan operasi sehari-hari Sistem Aplikasi E-Filing ini merupakan perangkat lunak berbasis web yang diakses untuk menjalankan
 operasi pengarsipan menggunakan PC atau Laptop. Dengan fungsi dasar sebagai berikut:
-1.	….
-2.	….
-3.	….
+1.  Fungsi Input data dengan melakukan cara yang praktis yaitu dengan bantuan alat scanner, data akan masuk kedalam data base
+    penyimpanan.
+2.	Fungsi Proses penyimpanan data dilakukan dengan sistem desain struktur data yang terintegrasi dan Proses pencarian informasi data
+    yang akan di butuhkan akan lebih cepat dan akurat.
+3.	Fungsi Output adalah dengan menyediakan bentuk laporan informasi tentang dokumen secara komprehandsip.
 
-Tujuan dari Sistem Informasi Pengarsipan berbasiskan web adalah mempermudah proses administrasi dari mulai penyimpanan sampai 
+Tujuan dari Sistem Aplikasi E-Filing berbasiskan web adalah mempermudah proses administrasi dari mulai penyimpanan sampai 
 pemberian informasi secara cepat dan akurat dan efisien serta efektif
 
-Manfaat perangkat lunak sistem infromasi …. ini adalah :
-1.	…..
-2.	….
-3.	….
-4.	
+Manfaat perangkat lunak Sistem Aplikasi E-Filing ini adalah :
+1.	Menghemat biaya penyimpanan.
+2.	Tidak memerlukan gudang tempat penyimpanan yang besar.
+3.  Mampu memberikan informasi yang diperlukan secara cepat dan akurat.
+4.	Integritas dan keamanan data dokumen lebih terjamin.
