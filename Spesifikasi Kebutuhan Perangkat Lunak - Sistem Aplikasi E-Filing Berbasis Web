@@ -35,7 +35,8 @@ satu subsistem./* -> Harus di edit
 
 1.1. Tujuan
 1.2	Definisi, Istilah dan Singkatan
-Guna memberikan gambaran yang sama terhadap beberapa definisi, istilah dan singkatan yang digunakan di dokumen ini, perlu dijelaskan sebagaimana berikut:
+Guna memberikan gambaran yang sama terhadap beberapa definisi, istilah dan singkatan yang digunakan di dokumen ini, 
+perlu dijelaskan sebagaimana berikut:
 
 XAMPP adalah Virtual Webserver perangkat lunak bebas, yang mendukung banyak sistem operasi, merupakan kompilasi dari beberapa program.
 
@@ -57,15 +58,19 @@ adalah standar untuk memodelkan sistem perangkat lunak
 …
 
 1.3	Target Audiens
-Pengguna dari dokumen ini adalah pengembang perangkat lunak Sistem Informasi Pengarsipan dan  pengguna (user) dari perangkat lunak atau personil-personil yang terlibat dalam sistem. 
+Pengguna dari dokumen ini adalah pengembang perangkat lunak Sistem Informasi Pengarsipan dan pengguna (user) dari perangkat lunak 
+atau personil-personil yang terlibat dalam sistem. 
 
 1.4	Ruang Lingkup Perangkat Lunak
-Sistem Informasi Pengarsipan adalah sistem terkomputerisasi yang mengelola pengarsipan dokumen dalam bentuk data sistem, dalam melakukan operasi sehari-hari Sistem Informasi Pengarsipan ini merupakan perangkat lunak berbasis web yang diakses untuk menjalankan operasi pengarsipan menggunakan PC atau Laptop. Dengan fungsi dasar sebagai berikut:
+Sistem Informasi Pengarsipan adalah sistem terkomputerisasi yang mengelola pengarsipan dokumen dalam bentuk data sistem, dalam 
+melakukan operasi sehari-hari Sistem Informasi Pengarsipan ini merupakan perangkat lunak berbasis web yang diakses untuk menjalankan
+operasi pengarsipan menggunakan PC atau Laptop. Dengan fungsi dasar sebagai berikut:
 1.	….
 2.	….
 3.	….
 
-Tujuan dari Sistem Informasi Pengarsipan berbasiskan web adalah mempermudah proses administrasi dari mulai penyimpanan sampai pemberian informasi secara cepat dan akurat dan efisien serta efektif
+Tujuan dari Sistem Informasi Pengarsipan berbasiskan web adalah mempermudah proses administrasi dari mulai penyimpanan sampai 
+pemberian informasi secara cepat dan akurat dan efisien serta efektif
 
 Manfaat perangkat lunak sistem infromasi …. ini adalah :
 1.	…..
