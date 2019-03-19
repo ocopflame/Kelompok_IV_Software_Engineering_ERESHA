@@ -6,7 +6,7 @@ Version 1.0
 
 Dibuat oleh
 1. Januar Ilham           (182022000002)
-2.
+2. Rachmad Rizal          (181022000003)
 3.
 4.
 5. Arief Rachman Andhika  (181022000006)
@@ -34,3 +34,41 @@ FileZilla FTP Server 0.9.41, Tomcat 7.0.92, Strawberry Perl 5.16.3.1 Portable.
 satu subsistem./* -> Harus di edit
 
 1.1. Tujuan
+1.2	Definisi, Istilah dan Singkatan
+Guna memberikan gambaran yang sama terhadap beberapa definisi, istilah dan singkatan yang digunakan di dokumen ini, perlu dijelaskan sebagaimana berikut:
+
+XAMPP adalah Virtual Webserver perangkat lunak bebas, yang mendukung banyak sistem operasi, merupakan kompilasi dari beberapa program.
+
+PHP adalah bahasa pemgrograman untuk membuat web dimana skripnya ditanamkan atau disisipkan ke dalam skrip HTML sebagai tampilan
+
+
+IEEE (Institute of Electrical and Electronics Engineers)
+Adalah standar internasional untuk pengembang perangkat lunak
+
+SKPL (Spesifikasi Kebutuhan Perangkat Lunak) atau 
+SRS (Software Requirement Specification) 
+Adalah dokumen hasil analisis sebuah perangkat lunak yang berisi spesifikasi kebutuhan pengguna
+
+UML (Unified Modeling Language) 
+adalah standar untuk memodelkan sistem perangkat lunak
+
+….
+…
+…
+
+1.3	Target Audiens
+Pengguna dari dokumen ini adalah pengembang perangkat lunak Sistem Informasi Pengarsipan dan  pengguna (user) dari perangkat lunak atau personil-personil yang terlibat dalam sistem. 
+
+1.4	Ruang Lingkup Perangkat Lunak
+Sistem Informasi Pengarsipan adalah sistem terkomputerisasi yang mengelola pengarsipan dokumen dalam bentuk data sistem, dalam melakukan operasi sehari-hari Sistem Informasi Pengarsipan ini merupakan perangkat lunak berbasis web yang diakses untuk menjalankan operasi pengarsipan menggunakan PC atau Laptop. Dengan fungsi dasar sebagai berikut:
+1.	….
+2.	….
+3.	….
+
+Tujuan dari Sistem Informasi Pengarsipan berbasiskan web adalah mempermudah proses administrasi dari mulai penyimpanan sampai pemberian informasi secara cepat dan akurat dan efisien serta efektif
+
+Manfaat perangkat lunak sistem infromasi …. ini adalah :
+1.	…..
+2.	….
+3.	….
+4.	
