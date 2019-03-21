@@ -241,25 +241,14 @@ Sistem Informasi Penjualan ini adalah program yang akan dibangun menggunakan bah
 3.4	Antarmuka Komunikasi
 Jaringan komunikasi dalam aplikasi ini menggunakan jaringan internet untuk dapat saling berkomunikasi. Protokol yang digunakan untuk aplikasi ini adalah HTTP (Hyper Text Transfer Protocol). Berikut merupakan gambaran antarmuka komunikasi yang digunakan :
 
+4.	Fitur Sistem
+Bagian ini adalah awal untuk membangun sistem yang menggambarkan awal dari pernyataan masalah. Konsep desain dasar ditafsirkan ke dalam Use Case Diagram. Ini termasuk mengidentifikasi aktor utama, sistem dalam pengembangan dan fungsinya dalam hal kasus atau fungsi yang digunakan. Dan perancangan database yang mendefiniksan ebuah koleksi objek database seperti tabel, indeks dan relasi antara table yang digambarkan dalam Skema Database.
 
+Kebutuhan fungsional perangkat lunak sistem informasi penjualan berbasi web untuk mempermudah dalam mengelola pencatatan pembelian dan penjualan barang yang direncankan terdiri dari fitur-fitur antara lain:
+1.	Login 
+2.	Halaman Utama 
+3.	…
+4.	…
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Gambar-2: Antarmuka komunikasi
 
 
