@@ -214,3 +214,52 @@ SKPL ini akan terpengaruh jika asumsi-asumsinya tidak benar, tidak shared, atau 
 eksternal, seperti komponen-komponen perangkat lunak yang dimaksudkan untuk digunakan pada proyek lain, kecuali kalau telah disiapkan 
 pada dokumen lain (misalnya dalam dokumen perencanaan proyek)>
 
+3.	Kebutuhan Antar muka External
+Kebutuhan antar muka eksternal pada perangkat lunak Sistem Informasi Penjualan meliputi kebutuhan antarmuka pengguna, antarmuka perangkat keras, antarmuka perangkat lunak, antarmuka komunikasi
+3.1	Antar muka Pengguna
+Aplikasi sistem informas penjualan ini menggunakan antarmuka grafis berbasis web, dan pengguna mengoperasikannya menggunakan keyboard dan mouse dengan sistem operasi windows dan linux serta dapat diakses menggunakan perangkat mobile seperti HP, PDA, dan lain-lain.
+
+3.2	Antar muka Perangkat Keras
+Aplikasi ini berjalan di atas perangkat keras berupa beberapa komputer yang saling terhubung oleh jaringan internet dan berkomunikasi dengan protocol http. Dimana file aplikasi ditempatkan pada webhosting yang dioperasikan oleh Administrator.
+
+Namun untuk menjalankan aplikasi ini diperlukan 2 jenis perangkat keras, yaitu :
+1.	Komputer server, adalah komputer yang berfungsi sebagai komputer penyimpan, pemroses, penyedia, dan pendistribusian keseluruhan data dan informasi.
+2.	…
+3.	…
+
+Antarmuka perangkat keras yang digunakan dalam perangkat lunak ini adalah :
+1.	Sistem Informasi ini berjalan di komputer server. Semua komputer yang digunakan untuk server harus saling terhubung dalam suatu jaringan misalnya LAN, WAN, Intranet dan Internet.
+2.	…
+3.	…
+4.	…
+3.3	Antar muka Perangkat Lunak
+Sistem Informasi Penjualan ini adalah program yang akan dibangun menggunakan bahasa PHP, MySQL, dan akan berjalan pada Sistem Operasi Windows dan linux dan akan memakai browser computer dan browser perangkat mobile.
+…
+…
+…
+
+3.4	Antarmuka Komunikasi
+Jaringan komunikasi dalam aplikasi ini menggunakan jaringan internet untuk dapat saling berkomunikasi. Protokol yang digunakan untuk aplikasi ini adalah HTTP (Hyper Text Transfer Protocol). Berikut merupakan gambaran antarmuka komunikasi yang digunakan :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Gambar-2: Antarmuka komunikasi
+
+
