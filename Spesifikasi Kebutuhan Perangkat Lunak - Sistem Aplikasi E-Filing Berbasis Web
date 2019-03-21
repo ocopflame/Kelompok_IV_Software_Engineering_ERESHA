@@ -51,11 +51,16 @@ SRS (Software Requirement Specification)
 Adalah dokumen hasil analisis sebuah perangkat lunak yang berisi spesifikasi kebutuhan pengguna
 
 UML (Unified Modeling Language) 
-adalah standar untuk memodelkan sistem perangkat lunak
+adalah standar untuk memodelkan sistem perangkat lunak.
+UML diciptakan oleh Object Management Group yang diawali dengan versi 1.0 pada Januari 1997. 
+Dalam pengembangan berorientasi objek ada beberapa prinsip yang harus dikenal:
 
-….
-…
-…
+… Object
+- Class
+- Abstraction
+- Encapsulation
+- Inheritance
+- Polymorphism
 
 1.3	Target Audiens
 Pengguna dari dokumen ini adalah pengembang perangkat lunak Sistem Aplikasi E-Filing dan pengguna (user) dari perangkat
