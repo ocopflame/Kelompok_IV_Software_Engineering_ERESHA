@@ -79,3 +79,138 @@ Manfaat perangkat lunak Sistem Aplikasi E-Filing ini adalah :
 2.  Tidak memerlukan gudang tempat penyimpanan yang besar.
 3.  Mampu memberikan informasi yang diperlukan secara cepat dan akurat.
 4.  Integritas dan keamanan data dokumen lebih terjamin.
+
+2.	Deskripsi Umum
+2.1	Tentang Perangkat Lunak
+Web Browser adalah Dikenal juga dengan istilah browser, atau peselancar, atau internet browser. Adalah suatu program komputer yang 
+menyediakan fasilitas untuk membaca halaman web di suatu komputer. Program web browser yang cukup populer saat ini adalah Microsoft
+Internet Explorer, Mozila Firefox dan Chrome. Program browser pertama adalah Mosaic, yang merupakan suatu text browser, yang sekarang
+web browser telah berkembang ke dalam bentuk multimedia. Web juga merupakan halaman informasi yang disediakan melalui jalur internet
+sehingga bisa diakses di seluruh dunia selama terkoneksi dengan internet.
+
+Web Hosting adalah Layanan untuk penempatan halaman-halaman web di internet di mesin komputer yang selalu terhubung dengan internet, 
+umumnya layanan ini disediakan oleh penyelenggara jasa internet atau Internet Presence Provider.
+
+Perangkat lunak Sistem Informasi ini merupakan ....
+….
+….
+
+<Gambarkan secara apa adanya keadaan perangkat lunak yang ditetapkan dalam SKPL ini. Sebagai contoh, perangkat lunak yang mengganti 
+sebagian sistem yang ada. Jika SKPL mendefinisikan komponen dari sistem yang besar, kebutuhan dari sistem tersebut di bagi menjadi dua,
+yaitu fungsionalitas perangkat lunak dan identifikasi antarmuka. Diagram sederhana dapat membantu untuk menunjukkan komponen utama dari
+sistem keseluruhan, interkoneksi subsistem dan antarmuka eksternal> 
+2.2	Fungsi Perangkat Lunak
+Pembuatan Sistem Informasi Pengarsipan berbasis web ini diawali dengan proses penelusuran untuk mengidentifikasi dan menganalisis semua
+kebutuhan yang berhubungan dengan konten dan dan  fitur-fitur  yang  dibutuhkan. 
+
+Perangkat Lunak Sistem Informasi Pengarsipan ini mempunyai beberapa fungsi utama, antara lain:
+1.	…
+2.	…
+3.	…
+4.	…
+
+
+
+
+
+
+
+
+
+
+Gambar-1: alur proses sistem informasi penjualan
+
+<Ringkasan dari fungsi-fungsi utama perangkat lunak. Detailnya akan dijelaskan pada bab 3, jadi hanya ringkasan yang bersifat high 
+level (seperti item ber-bullet) saja yang dibutuhkan di sini. Aturlah fungsi-fungsi tersebut agar mudah dipahami pembaca SKPL ini. 
+Gambar yang efektif untuk digunakan seperti data flow diagram level 0 atau object class diagram>
+2.3	Karakteristik dan Klasifikasi Pengguna
+Klasifikasi pengguna dalam Sistem Informasi Pengarsipan Online ini dibedakan sesuai dengan fungsi utama dan fungsi pendukungnya, 
+yakni terbagi menjadi:
+
+1.	Administrator, pada dasarnya merupakan user internal yang mempunyai hak akses super dalam aplikasi ini. User ini bertanggung jawab
+pada keberlangsungan sistem dan keamanan data.
+2.	….
+3.	…
+4.	…
+
+Dari keterangan klasifikasi pengguna di atas, maka dapat ditentukan karakteristik pengguna berdasarkan atas pembagian hak akses pada 
+aplikasi ini, antara lain:
+1.	Hak Akses Administrator, dengan hak-hak sebagai berikut:
+a.	Hak untuk mengubah … 
+b.	Hak untuk melakukan …
+
+2.	Hak Akses Karyawan/Staf, dengan hak-hak sebagai berikut:
+a.	Hak untuk memasukkan data…
+b.	Hak untuk mengubah data ..
+c.	Hak untuk melakukan transaksi …
+
+<Memperkenalkan variasi klasifikasi pengguna yang akan mempergunakan pelarangkat lunak ini. Klasifikasi pengguna bisa dibedakan 
+berdasarkan banyak pengguna, kumpulan pengguna fungsi perangkat lunak, keahlian teknis, keamanan atau pembagian hak akses. Terangkan
+karakteristik dan kebutuhan yang berhubungan dengan setiap klasifikasi pengguna. Membedakan klasifikasi pengguna yang sangat penting 
+untuk perangkat lunak ini, dengan klasifikasi pengguna yang dianggap kurang penting untuk dipuaskan>
+
+2.4	Lingkungan Operasi
+Lingkungan operasi dan kebutuhan dari Sistem Informasi Pengarsipan ini terdiri dari:
+
+A.	Kebutuhan server
+a.	Kebutuhan Hardware
+i.	CPU dengan spesifikasi : Prosesor  Dual Core 32 Bit, RAM 4G, Hardisk 500 Gb, DiskDrive 3.5”
+ii.	Monitor SVGA
+iii.	Keyboard
+iv.	Mouse
+v.	Printer
+vi.	Tempat penyimpanan (Harrddisk) Miimal sebesar 100 GB
+
+b.	Kebutuhan Software
+i.	Sistem operasi Windows atau linux
+ii.	Software web server Apache
+iii.	Database mysql
+iv.	Bahasa pemrograman PHP
+
+B.	Kebutuhan client
+a.	Kebutuhan Hardware
+i.	CPU dengan spesifikasi: Prosesor i3, RAM 2G, Hardisk 10 Gb
+ii.	Monitor SVGA
+iii.	Keyboard
+iv.	Mouse
+v.	Kebutuhan Software
+vi.	Sistem operasi Windows atau linux
+vii.	Browser (Mozilla dan chrome)
+
+<Gambaran lingkungan dimana perangkat lunak ini akan beroperasi, termasuk platform perangkat keras, versi dan sistem operasi, dan 
+berbagai software atau aplikasi lain yang diperlukan untuk mendapinginya>
+
+2.5	Batasan Desain dan Implementasi
+Pengembangan Aplikasi Sistem Informasi Pengarsipan berbasi web ini memiliki keterbatasan-keterbatasan yaitu sebagai berikut  :
+1.	Aplikasi ini dibuat dengan desain yang mudah dipahami dan di akses
+2.	Aplikasi ini dibangun menggunakan PHP dengan database menggunakan MySQL dan server mengunakan Apache Server dan MySQL Server.
+
+<Gambaran beberapa item atau isu yang dapat membatasi pengembangan perangkat lunak. Hal ini termasuk: kebijakan regulasi perusahaan, 
+keterbatasan perangkat keras (timing requirements, memory requirements), antarmuka pada aplikasi lain, teknologi tertentu, tools, dan
+database yang digunakan, operasi paralel, kebutuhan bahasa, protokol komunikasi, pertimbangan keamanan, konvensi desain atau standart
+pemrograman (contohnya jika organisasi customer/pengguna akan bertanggung jawab dalam pemelihara perangkat lunak yang telah diberikan)>
+2.6	Dokumentasi untuk pengguna
+Dokumentasi untuk pengguna berisi panduan bagi pengguna aplikasi Sistem Informasi Penjualan
+1.	Dokumen Manual adalah panduan tentang aspek utama aplikasi ini dan alur kerja untuk mengoperasikannya 
+2.	Dokumen Teknis (Programmer, System Analyst), bagi orang-orang yang mengembangkan kode-kode programnya
+
+
+
+<Daftar komponen-komponen dokumentasi yang diperuntukkan kepada pengguna (seperti: user manual, bantuan on-line, dan tutorials) dan
+yang akan diberikan bersama-sama perangkat lunaknya>
+2.7	Asumsi dan Ketergantungan
+
+Asumsi yang digunakan dalam pengembangan perangkat lunak yaitu sebagai berikut:
+1.	Salah seorang tim teknis pengembang aplikasi 
+2.	Melakukan konsultasi dengan user 
+3.	Aplikasi pendukung seperti Apache, Mysql dan PHP berfungsi dengan baik
+4.	…
+5.	…
+6.	…
+
+<Daftar beberapa asumsi yang akan mempengaruhi beberapa kebutuhan dalam SKPL ini. Termasuk di dalamnya third-party atau komponen 
+komersil dalam perencanaan yang digunakan, isu-isu atau batasan tentang pengembangan atau lingkungan operasi. Pekerjaan pembuatan
+SKPL ini akan terpengaruh jika asumsi-asumsinya tidak benar, tidak shared, atau berubah. Tunjukkan juga ketergantungan terhadap faktor 
+eksternal, seperti komponen-komponen perangkat lunak yang dimaksudkan untuk digunakan pada proyek lain, kecuali kalau telah disiapkan 
+pada dokumen lain (misalnya dalam dokumen perencanaan proyek)>
+
