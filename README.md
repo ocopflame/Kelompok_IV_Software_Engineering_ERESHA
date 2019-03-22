@@ -21,5 +21,5 @@ NO    NAMA                          NIP
 2.    Rachmad Rizal                 181022000003
 3.    Januar Ilham                  182022000002
 4.    Parera Jumano                 182022000012
-5.
+5.    Danil Satria                  181022000011
 
