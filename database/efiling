@@ -1,0 +1,41 @@
+Basis data efiling
+Struktur dari tabel bentuk
+Kolom	Jenis	Tak Ternilai	Bawaan
+BentukID	int(11)	Tidak	
+Bentuk	varchar(100)	Ya	NULL
+Dumping data untuk tabel bentuk
+
+Struktur dari tabel incoming
+Kolom	Jenis	Tak Ternilai	Bawaan
+IncomingID	int(11)	Tidak	
+TanggalTerima	datetime	Ya	NULL
+TanggalSurat	datetime	Ya	NULL
+BentukID	int(11)	Ya	NULL
+Dari	varchar(100)	Ya	NULL
+NoSurat	varchar(100)	Tidak	
+NoAgenda	varchar(100)	Ya	NULL
+Perihal	varchar(255)	Ya	NULL
+Ringkasan	varchar(500)	Ya	NULL
+DisposisiKe	varchar(500)	Ya	NULL
+IsiDisposisi	varchar(500)	Ya	NULL
+EmailPeringatan	varchar(100)	Ya	NULL
+TanggalPeringatan	datetime	Ya	NULL
+IsiPeringatan	varchar(255)	Ya	NULL
+lampiran1	varchar(255)	Ya	NULL
+lampiran2	varchar(255)	Ya	NULL
+lampiran3	varchar(255)	Ya	NULL
+UserID	int(11)	Tidak	
+UserName	varchar(50)	Ya	NULL
+Dumping data untuk tabel incoming
+
+Struktur dari tabel user
+Kolom	Jenis	Tak Ternilai	Bawaan
+UserID	int(11)	Tidak	
+UserName	varchar(50)	Ya	NULL
+password	varchar(50)	Ya	NULL
+NamaUser	varchar(100)	Ya	NULL
+Otorisasi	smallint(6)	Ya	NULL
+Status	smallint(6)	Ya	NULL
+Dumping data untuk tabel user
+
+
