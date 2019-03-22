@@ -20,6 +20,6 @@ NO    NAMA                          NIP
 1.    Arief Rachman Andhika         181022000006    
 2.    Rachmad Rizal                 181022000003
 3.    Januar Ilham                  182022000002
-4.
+4.    Parera Jumano                 182022000012
 5.
 
