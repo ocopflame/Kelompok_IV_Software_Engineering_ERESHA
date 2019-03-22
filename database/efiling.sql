@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bentuk`
+-- Struktur dari  tabel `bentuk`
 --
 
 CREATE TABLE `bentuk` (
