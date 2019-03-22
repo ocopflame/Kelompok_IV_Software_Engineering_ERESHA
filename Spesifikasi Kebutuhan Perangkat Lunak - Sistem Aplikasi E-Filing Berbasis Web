@@ -30,60 +30,35 @@ Revisi Dokumen
 Sistem aplikasi E-Filing merupakan perangkat lunak berbasis web yang di jalankan menggunakan Apache 2.4.38, MariaDB 10.1.38,
 PHP 5.6.40, phpMyAdmin 4.8.5, OpenSSL 1.0.2q, XAMPP Control Panel 3.2.2, Webalizer 2.23-04, Mercury Mail Transport System 4.63,
 FileZilla FTP Server 0.9.41, Tomcat 7.0.92, Strawberry Perl 5.16.3.1 Portable.
-*/Jelaskan ruang lingkup produk yang dicakup oleh SRS ini, terutama jika SRS ini hanya menjelaskan sebagian dari sistem atau
-satu subsistem./* -> Harus di edit
+Sistem ini melakukan pengaturan orang, data, proses dan teknologi informasi yang
+berinteraksi untuk mengumpulkan, memproses, menyimpan dan menyediakan sebagai output.
 
 1.1. Tujuan
-1.2	Definisi, Istilah dan Singkatan
-Guna memberikan gambaran yang sama terhadap beberapa definisi, istilah dan singkatan yang digunakan di dokumen ini, 
-perlu dijelaskan sebagaimana berikut:
+Tujuan pembuatan software ini adalah untuk membantu pengguna dalam melakukan pengarsipan secara elektronik. Selama ni dokumen di arsip secara manual di tempat penyimpanan lemari/rak yang disediakan, tetapi dengan semakin banyaknya dokmen, maka tempat penyimpanan yang dibutuhkan akan semakin banyak. Disisi lain proses pencarian kembali dokumen memerlukan waktu yang cukup lama. Dengan software ini, dokumen akan disimpan secara elektronik. Setiap dokumen dibuatkan narasinya dengan mengisi form yang disediakan, guna mempermudah disaat pencarian. Dokumen asli di scan, kemudian file hasil scan nya di upload sebagai lampiran.
 
-XAMPP adalah Virtual Webserver perangkat lunak bebas, yang mendukung banyak sistem operasi, merupakan kompilasi dari beberapa program.
+Dalam dokumen ini akan disajikan deskripsi dari perangkat lunak e-filling secara lengkap yaitu mulai dari tujuan, fitur, antarmuka, kebutuhan perangkat dan lain sebagainya.
 
-PHP adalah bahasa pemgrograman untuk membuat web dimana skripnya ditanamkan atau disisipkan ke dalam skrip HTML sebagai tampilan
+1.2	Target Audiens
+Dokumen ini di tujukan untuk:
+o	Pengembang aplikasi, yaitu programmer dan tim pengembang yang tertarik terhadap aplikasi ini, dan ingin mengembangkan lebih lanjut, dan atau ingin memperbaiki kesalahan aplikasi yang sudah ada.
+o	Pengguna, yaitu pengguna aplikasi yang ingin menggunakan aplikasi e-filing untuk membantu pekerjaannya.
+o	Pihak lain yang ingin berkontribusi terhadap aplikasi ini.
 
+1.3	Ruang Lingkup Perangkat Lunak
+Sistem Aplikasi E-Filing adalah sistem terkomputerisasi yang mengelola pengarsipan dokumen dalam bentuk data sistem, dalam melakukan operasi sehari-hari Sistem Aplikasi E-Filing ini merupakan perangkat lunak berbasis web yang diakses untuk menjalankan operasi pengarsipan menggunakan PC atau Laptop. Dengan fungsi dasar sebagai berikut:
 
-IEEE (Institute of Electrical and Electronics Engineers)
-Adalah standar internasional untuk pengembang perangkat lunak
-
-SKPL (Spesifikasi Kebutuhan Perangkat Lunak) atau 
-SRS (Software Requirement Specification) 
-Adalah dokumen hasil analisis sebuah perangkat lunak yang berisi spesifikasi kebutuhan pengguna
-
-UML (Unified Modeling Language) 
-adalah standar untuk memodelkan sistem perangkat lunak.
-UML diciptakan oleh Object Management Group yang diawali dengan versi 1.0 pada Januari 1997. 
-Dalam pengembangan berorientasi objek ada beberapa prinsip yang harus dikenal:
-
-… Object
-- Class
-- Abstraction
-- Encapsulation
-- Inheritance
-- Polymorphism
-
-1.3	Target Audiens
-Pengguna dari dokumen ini adalah pengembang perangkat lunak Sistem Aplikasi E-Filing dan pengguna (user) dari perangkat
-lunak atau personil-personil yang terlibat dalam sistem. 
-
-1.4	Ruang Lingkup Perangkat Lunak
-Sistem Aplikasi E-Filing adalah sistem terkomputerisasi yang mengelola pengarsipan dokumen dalam bentuk data sistem, dalam 
-melakukan operasi sehari-hari Sistem Aplikasi E-Filing ini merupakan perangkat lunak berbasis web yang diakses untuk menjalankan
-operasi pengarsipan menggunakan PC atau Laptop. Dengan fungsi dasar sebagai berikut:
-1.  Fungsi Input data dengan melakukan cara yang praktis yaitu dengan bantuan alat scanner, data akan masuk kedalam data base
-    penyimpanan.
-2.  Fungsi Proses penyimpanan data dilakukan dengan sistem desain struktur data yang terintegrasi dan Proses pencarian informasi
-    data yang akan di butuhkan akan lebih cepat dan akurat.
-3.  Fungsi Output adalah dengan menyediakan bentuk laporan informasi tentang dokumen secara komprehandsip.
+o	Fungsi Input data dengan melakukan cara yang praktis yaitu dengan bantuan alat scanner, data akan masuk kedalam data base penyimpanan.
+o	Fungsi Proses penyimpanan data dilakukan dengan sistem desain struktur data yang terintegrasi dan Proses pencarian informasi data yang akan di butuhkan akan lebih cepat dan akurat.
+o	Fungsi Output adalah dengan menyediakan bentuk laporan informasi tentang dokumen secara komprehandsip.
 
 Tujuan dari Sistem Aplikasi E-Filing berbasiskan web adalah mempermudah proses administrasi dari mulai penyimpanan sampai 
 pemberian informasi secara cepat dan akurat dan efisien serta efektif
 
 Manfaat perangkat lunak Sistem Aplikasi E-Filing ini adalah :
-1.  Menghemat biaya penyimpanan.
-2.  Tidak memerlukan gudang tempat penyimpanan yang besar.
-3.  Mampu memberikan informasi yang diperlukan secara cepat dan akurat.
-4.  Integritas dan keamanan data dokumen lebih terjamin.
+o	Menghemat biaya penyimpanan.
+o	Tidak memerlukan gudang tempat penyimpanan yang besar.
+o	Mampu memberikan informasi yang diperlukan secara cepat dan akurat.
+o	Integritas dan keamanan data dokumen lebih terjamin.
 
 2.	Deskripsi Umum
 2.1	Tentang Perangkat Lunak
