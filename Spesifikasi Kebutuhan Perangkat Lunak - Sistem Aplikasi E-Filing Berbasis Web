@@ -223,7 +223,7 @@ Jaringan komunikasi dalam aplikasi ini menggunakan jaringan internet untuk dapat
 4.	Fitur Sistem
 Bagian ini adalah awal untuk membangun sistem yang menggambarkan awal dari pernyataan masalah. Konsep desain dasar ditafsirkan ke dalam Use Case Diagram. Ini termasuk mengidentifikasi aktor utama, sistem dalam pengembangan dan fungsinya dalam hal kasus atau fungsi yang digunakan. Dan perancangan database yang mendefiniksan ebuah koleksi objek database seperti tabel, indeks dan relasi antara table yang digambarkan dalam Skema Database.
 
-Kebutuhan fungsional perangkat lunak sistem informasi penjualan berbasi web untuk mempermudah dalam mengelola pencatatan pembelian dan penjualan barang yang direncankan terdiri dari fitur-fitur antara lain:
+Kebutuhan fungsional perangkat lunak sistem informasi berbasi web untuk mempermudah dalam mengelola pencatatan pembelian dan penjualan barang yang direncankan terdiri dari fitur-fitur antara lain:
 1.	Login 
 2.	Halaman Utama 
 3.	…
