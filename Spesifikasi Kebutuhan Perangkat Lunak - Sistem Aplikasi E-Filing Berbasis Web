@@ -35,7 +35,6 @@ berinteraksi untuk mengumpulkan, memproses, menyimpan dan menyediakan sebagai ou
 
 1.1. Tujuan
 Tujuan pembuatan software ini adalah untuk membantu pengguna dalam melakukan pengarsipan secara elektronik. Selama ni dokumen di arsip secara manual di tempat penyimpanan lemari/rak yang disediakan, tetapi dengan semakin banyaknya dokmen, maka tempat penyimpanan yang dibutuhkan akan semakin banyak. Disisi lain proses pencarian kembali dokumen memerlukan waktu yang cukup lama. Dengan software ini, dokumen akan disimpan secara elektronik. Setiap dokumen dibuatkan narasinya dengan mengisi form yang disediakan, guna mempermudah disaat pencarian. Dokumen asli di scan, kemudian file hasil scan nya di upload sebagai lampiran.
-
 Dalam dokumen ini akan disajikan deskripsi dari perangkat lunak e-filling secara lengkap yaitu mulai dari tujuan, fitur, antarmuka, kebutuhan perangkat dan lain sebagainya.
 
 1.2	Target Audiens
