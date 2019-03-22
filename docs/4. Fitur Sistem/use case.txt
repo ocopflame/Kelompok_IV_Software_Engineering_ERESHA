@@ -1,0 +1,45 @@
+************************************************************************************************
+NO	|	LAYANAN						|	USE CASE					|	DESKRIPSI				
+************************************************************************************************
+1	|	Login						|	Admin, Super User, User		|	Menerima input:			
+																		username & password		
+------------------------------------------------------------------------------------------------
+2	|	Input Data Pengguna			|	Admin						|	Menerima input:
+																		User ID	
+																		Nama User
+																		Password
+																		Otorisasi
+																		Status
+------------------------------------------------------------------------------------------------
+3	|	Input Data Referensi		|	Admin, Super User			|	Menerima input:
+																	
+
+------------------------------------------------------------------------------------------------
+4	|	Input Data Agenda Masuk		|	Admin, User					|	Menerima input:
+																		Tanggal Terima
+																		Tanggal Surat
+																		Jenis Surat
+																		Nomor Surat
+																		Nomor Agenda
+																		Asal Surat
+																		Perihal
+																		Ringkasan Isi
+																		Lampiran 1
+																		Lampiran 2
+																		Lampiran 3
+																		Disposisi
+																		Isi Disposisi
+																		Alamat Email
+																		Tanggal
+																		Isi
+-------------------------------------------------------------------------------------------------
+5	|	Input Data Agenda Keluar	|	Super User, User			|
+
+-------------------------------------------------------------------------------------------------
+6	|	Input Data Dokumen Lain		|	Super user, User			|
+
+-------------------------------------------------------------------------------------------------
+7	|	Input Data Ubah Password	|	Super User, User			|	Menerima input:
+																		Password Lama
+																		Password Baru
+																	
