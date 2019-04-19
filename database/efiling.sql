@@ -1,49 +1,35 @@
--- phpMyAdmin SQL Dump
--- version 4.8.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Waktu pembuatan: 22 Mar 2019 pada 15.15
--- Versi server: 10.1.37-MariaDB
--- Versi PHP: 5.6.40
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Versi server:                 10.1.16-MariaDB - mariadb.org binary distribution
+-- OS Server:                    Win32
+-- HeidiSQL Versi:               9.5.0.5196
+-- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
---
--- Database: `efiling`
---
+-- membuang struktur untuk table efiling.divisi
+CREATE TABLE IF NOT EXISTS `divisi` (
+  `DivisiID` smallint(6) NOT NULL AUTO_INCREMENT,
+  `Divisi` varchar(50) DEFAULT NULL,
+  `StatusID` smallint(6) DEFAULT NULL,
+  `CreateBy` varchar(50) DEFAULT NULL,
+  `CreateDate` datetime DEFAULT NULL,
+  `UpdateBy` varchar(50) DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`DivisiID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
-
---
--- Struktur dari  tabel `bentuk`
---
-
-CREATE TABLE `bentuk` (
-  `BentukID` int(11) NOT NULL,
-  `Bentuk` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `incoming`
---
-
-CREATE TABLE `incoming` (
-  `IncomingID` int(11) NOT NULL,
-  `TanggalTerima` datetime DEFAULT NULL,
+-- Pengeluaran data tidak dipilih.
+-- membuang struktur untuk table efiling.incoming
+CREATE TABLE IF NOT EXISTS `incoming` (
+  `IncomingID` int(11) NOT NULL AUTO_INCREMENT,
+  `DivisiID` smallint(6) DEFAULT NULL,
+  `Tanggal` datetime DEFAULT NULL,
   `TanggalSurat` datetime DEFAULT NULL,
-  `BentukID` int(11) DEFAULT NULL,
   `Dari` varchar(100) DEFAULT NULL,
   `NoSurat` varchar(100) NOT NULL,
   `NoAgenda` varchar(100) DEFAULT NULL,
@@ -51,92 +37,97 @@ CREATE TABLE `incoming` (
   `Ringkasan` varchar(500) DEFAULT NULL,
   `DisposisiKe` varchar(500) DEFAULT NULL,
   `IsiDisposisi` varchar(500) DEFAULT NULL,
-  `EmailPeringatan` varchar(100) DEFAULT NULL,
-  `TanggalPeringatan` datetime DEFAULT NULL,
-  `IsiPeringatan` varchar(255) DEFAULT NULL,
+  `JenisID` smallint(6) DEFAULT NULL,
+  `TingkatID` smallint(6) DEFAULT NULL,
   `lampiran1` varchar(255) DEFAULT NULL,
   `lampiran2` varchar(255) DEFAULT NULL,
   `lampiran3` varchar(255) DEFAULT NULL,
-  `UserID` int(11) NOT NULL,
-  `UserName` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `UserName` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`IncomingID`),
+  UNIQUE KEY `DivisiID_NoSurat` (`DivisiID`,`NoSurat`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
--- --------------------------------------------------------
+-- Pengeluaran data tidak dipilih.
+-- membuang struktur untuk table efiling.jenis
+CREATE TABLE IF NOT EXISTS `jenis` (
+  `JenisID` int(11) NOT NULL AUTO_INCREMENT,
+  `Jenis` varchar(100) DEFAULT NULL,
+  `StatusID` smallint(6) DEFAULT NULL,
+  `CreateBy` varchar(50) DEFAULT NULL,
+  `CreateDate` datetime DEFAULT NULL,
+  `UpdateBy` varchar(50) DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`JenisID`),
+  UNIQUE KEY `Bentuk` (`Jenis`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
---
--- Struktur dari tabel `user`
---
+-- Pengeluaran data tidak dipilih.
+-- membuang struktur untuk table efiling.log
+CREATE TABLE IF NOT EXISTS `log` (
+  `LogID` int(11) NOT NULL AUTO_INCREMENT,
+  `Modul` varchar(50) DEFAULT NULL,
+  `Deskripsi` varchar(255) DEFAULT NULL,
+  `UserName` varchar(50) DEFAULT NULL,
+  `Tanggal` datetime DEFAULT NULL,
+  PRIMARY KEY (`LogID`)
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=latin1;
 
-CREATE TABLE `user` (
-  `UserID` int(11) NOT NULL,
+-- Pengeluaran data tidak dipilih.
+-- membuang struktur untuk table efiling.outgoing
+CREATE TABLE IF NOT EXISTS `outgoing` (
+  `OutgoingID` int(11) NOT NULL AUTO_INCREMENT,
+  `DivisiID` smallint(6) DEFAULT NULL,
+  `Tanggal` datetime DEFAULT NULL,
+  `TanggalSurat` datetime DEFAULT NULL,
+  `Kepada` varchar(100) DEFAULT NULL,
+  `NoSurat` varchar(100) NOT NULL,
+  `NoAgenda` varchar(100) DEFAULT NULL,
+  `Perihal` varchar(255) DEFAULT NULL,
+  `Ringkasan` varchar(500) DEFAULT NULL,
+  `JenisID` smallint(6) DEFAULT NULL,
+  `TingkatID` smallint(6) DEFAULT NULL,
+  `lampiran1` varchar(255) DEFAULT NULL,
+  `lampiran2` varchar(255) DEFAULT NULL,
+  `lampiran3` varchar(255) DEFAULT NULL,
+  `UserName` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`OutgoingID`),
+  UNIQUE KEY `DivisiID_NoSurat` (`DivisiID`,`NoSurat`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+
+-- Pengeluaran data tidak dipilih.
+-- membuang struktur untuk table efiling.tingkat
+CREATE TABLE IF NOT EXISTS `tingkat` (
+  `TingkatID` smallint(6) NOT NULL AUTO_INCREMENT,
+  `Tingkat` varchar(50) DEFAULT NULL,
+  `StatusID` smallint(6) DEFAULT NULL,
+  `CreateBy` varchar(50) DEFAULT NULL,
+  `CreateDate` datetime DEFAULT NULL,
+  `UpdateBy` varchar(50) DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`TingkatID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+-- Pengeluaran data tidak dipilih.
+-- membuang struktur untuk table efiling.user
+CREATE TABLE IF NOT EXISTS `user` (
+  `UserID` int(11) NOT NULL AUTO_INCREMENT,
+  `DivisiID` smallint(6) DEFAULT NULL,
   `UserName` varchar(50) DEFAULT NULL,
   `password` varchar(50) DEFAULT NULL,
   `NamaUser` varchar(100) DEFAULT NULL,
-  `Otorisasi` smallint(6) DEFAULT NULL,
-  `Status` smallint(6) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `OtorisasiID` smallint(6) DEFAULT NULL,
+  `StatusID` smallint(6) DEFAULT NULL,
+  `CreateBy` varchar(50) DEFAULT NULL,
+  `CreateDate` datetime DEFAULT NULL,
+  `UpdateBy` varchar(50) DEFAULT NULL,
+  `UpdateDate` datetime DEFAULT NULL,
+  PRIMARY KEY (`UserID`),
+  UNIQUE KEY `UserName` (`UserName`),
+  KEY `FK_user_divisi` (`DivisiID`),
+  CONSTRAINT `FK_user_divisi` FOREIGN KEY (`DivisiID`) REFERENCES `divisi` (`DivisiID`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 
---
--- Indexes for dumped tables
---
-
---
--- Indeks untuk tabel `bentuk`
---
-ALTER TABLE `bentuk`
-  ADD PRIMARY KEY (`BentukID`),
-  ADD UNIQUE KEY `Bentuk` (`Bentuk`);
-
---
--- Indeks untuk tabel `incoming`
---
-ALTER TABLE `incoming`
-  ADD PRIMARY KEY (`IncomingID`),
-  ADD UNIQUE KEY `NoSurat` (`NoSurat`),
-  ADD KEY `UserID` (`UserID`),
-  ADD KEY `BentukID` (`BentukID`);
-
---
--- Indeks untuk tabel `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`UserID`),
-  ADD UNIQUE KEY `UserName` (`UserName`);
-
---
--- AUTO_INCREMENT untuk tabel yang dibuang
---
-
---
--- AUTO_INCREMENT untuk tabel `bentuk`
---
-ALTER TABLE `bentuk`
-  MODIFY `BentukID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT untuk tabel `incoming`
---
-ALTER TABLE `incoming`
-  MODIFY `IncomingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT untuk tabel `user`
---
-ALTER TABLE `user`
-  MODIFY `UserID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
---
-
---
--- Ketidakleluasaan untuk tabel `incoming`
---
-ALTER TABLE `incoming`
-  ADD CONSTRAINT `incoming_ibfk_1` FOREIGN KEY (`UserID`) REFERENCES `user` (`UserID`),
-  ADD CONSTRAINT `incoming_ibfk_2` FOREIGN KEY (`BentukID`) REFERENCES `bentuk` (`BentukID`);
-COMMIT;
-
+-- Pengeluaran data tidak dipilih.
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
