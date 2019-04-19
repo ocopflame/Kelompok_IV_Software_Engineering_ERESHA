@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="user.aspx.vb" Inherits="user" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="log.aspx.vb" Inherits="log" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -102,14 +102,13 @@
             <div class="container-fluid">
 <%--                <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Pengguna</h3>
+                        <h3 class="text-themecolor m-b-0 m-t-0">Log</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Pengguna</li>
+                            <li class="breadcrumb-item active">Log</li>
                         </ol>
                     </div>
-                </div>
---%>                
+                </div>--%>
                 
                 <div class="row">
                     <div class="col-lg-12 col-xlg-12 col-md-12">
@@ -117,84 +116,16 @@
                             <form id="form1" runat="server">
                                 <asp:Literal ID="ltAlert" runat="server"></asp:Literal>
 							    <div class="card-block">
-                                    <h2 class="card-title">Pengguna</h2>
+                                    <h2 class="card-title">Log</h2>
                                     <h6 class="card-subtitle italic"><asp:Label ID="lblHeader" runat="server" 
-                                            Text="Daftar Pengguna"></asp:Label></h6> 
+                                            Text="Daftar Log"></asp:Label></h6> 
 							    </div>
 
                                 <div class="card-block">
                                     <asp:HiddenField ID="hfIdData" runat="server" />
                                     <asp:Label ID="lblErrMessage" runat="server" ForeColor="Red"></asp:Label>
                                     
-                                    <asp:panel id="pnlInputData" runat="server" visible="false" >
-                                        <div class="form-material m-t-0 row">
-								            <div class="form-group required col-md-12 m-t-30">
-									            <label>Divisi</label>
-                                                <asp:DropDownList ID="ddlDivisi" required="" runat="server" class="form-control form-control-line" >
-                                                </asp:DropDownList>								            
-                                            </div>
-							                <div class="form-group required col-md-6 m-t-30">
-                                                <label>ID Pengguna</label>
-                                                <asp:TextBox ID="txtUserID" runat="server" required=""  class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-							                <div class="form-group required col-md-6 m-t-30">
-                                                <label>Nama Pengguna</label>
-                                                <asp:TextBox ID="txtNamaUser" runat="server" required=""  class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-							                <div class="form-group required col-md-6 m-t-30">
-                                                <label>Sandi</label>
-                                                <asp:TextBox ID="txtPassword" runat="server" required=""  textmode="Password" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-							                <div class="form-group required col-md-6 m-t-30">
-                                                <label>Ulangi Sandi</label>
-                                                <asp:TextBox ID="txtConfirmPassword" runat="server" required="" textmode="Password"  class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-								            <div class="form-group required col-md-6 m-t-30">
-									            <label>Otorisasi</label>
-                                                <asp:DropDownList ID="ddlOtorisasi" required="" runat="server" class="form-control form-control-line" >
-                                                    <asp:ListItem Text="Administrator" Value="1"></asp:ListItem> 
-                                                    <asp:ListItem Text="Super User" Value="2"></asp:ListItem> 
-                                                    <asp:ListItem Text="User" Value="3"></asp:ListItem> 
-                                                </asp:DropDownList>								            
-                                            </div>  
-								            <div class="form-group required col-md-6 m-t-30">
-									            <label>Status</label>
-                                                <asp:DropDownList ID="ddlStatus" required="" runat="server" class="form-control form-control-line" >
-                                                    <asp:ListItem Text="Aktif" Value="1"></asp:ListItem> 
-                                                    <asp:ListItem Text="Tidak Aktif" Value="2"></asp:ListItem> 
-                                                </asp:DropDownList>								            
-                                            </div>
-
-                                            <div class="form-group col-md-12 m-t-30 m-b-30">
-                                                <asp:Button ID="btnSave" runat="server" Text="Simpan" class="btn btn-danger" type="submit" />
-                                                <asp:Button ID="btnCancel" runat="server" Text="Batal" class="btn btn-danger" CausesValidation ="false" formnovalidate="formnovalidate"  />
-                                            </div>
-                                        </div>
-                                    </asp:panel>
-
                                     <asp:panel id="pnlGridData" runat="server" >
-                                        <div>
-                                            <asp:LinkButton ID="lnkAddNew" runat="server" class="btn btn-danger waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-open-in-new"></i><span class="hide-menu"> Tambah Baru</span></asp:LinkButton>
-                                        </div>
-                                        <div class="form-material m-t-0 row">
-										    <div class="form-group col-md-12 m-t-20">
-                                                <filter>Filter Data:</filter>
-										    </div>
-										    <div class="form-group col-md-3 m-t-10">
-											    <label>ID Pengguna</label>
-                                                <asp:TextBox ID="txtFilterUserName" runat="server" class="form-control form-control-line"></asp:TextBox>
-										    </div>
-										    <div class="form-group col-md-3 m-t-10">
-											    <label>Nama Pengguna</label>
-                                                <asp:TextBox ID="txtFilterNamaUser" runat="server" class="form-control form-control-line"></asp:TextBox>
-										    </div>
-										    <div class="form-group col-md-3 m-t-10">
-										        <div class="button-box">
-                                                    <asp:Button ID="btnRetrieve" runat="server" Text="Tampilkan" class="btn btn-danger"  />
-									            </div>
-										    </div>
-                                        </div>                                        
-
                                         <div class="table-responsive">
                                             <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" OnSorting="gv_Sorting"
                                                 AllowPaging="True" GridLines="None" 
@@ -202,15 +133,6 @@
                                                 AllowSorting="true" >                
                                                 <AlternatingRowStyle CssClass="alt" />
                                                 <Columns>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="BtnEdit" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("UserID")%>' CommandName="Ubah"   
-                                                                ImageUrl="images/icon/edit.png" ToolTip="Edit Data" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
-                                                    </asp:TemplateField>
-
                                                     <asp:TemplateField HeaderText="No">
                                                         <ItemTemplate>
                                                             <asp:Label ID="lblNomor" runat="Server" 
@@ -219,13 +141,10 @@
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="25px" />
                                                     </asp:TemplateField>
 
-                                                    <asp:BoundField DataField="Divisi" SortExpression="Divisi" HeaderText="Divisi" />
-                                                    <asp:BoundField DataField="UserName" SortExpression="UserName" HeaderText="ID Pengguna" />
-                                                    <asp:BoundField DataField="NamaUser" SortExpression="NamaUser" HeaderText="Nama Pengguna"  />
-                                                    <asp:BoundField DataField="Otorisasi" SortExpression="Otorisasi" HeaderText="Otorisasi"  />
-                                                    <asp:BoundField DataField="Status" SortExpression="Status" HeaderText="Status"  />
-                                                    <asp:BoundField DataField="UpdateBy" SortExpression="UpdateBy" HeaderText="Last Update Oleh"  />
-                                                    <asp:BoundField DataField="UpdateDate" SortExpression="UpdateDate" HeaderText="Last Update"  />
+                                                    <asp:BoundField DataField="Modul" SortExpression="Modul" HeaderText="Modul" />
+                                                    <asp:BoundField DataField="Deskripsi" SortExpression="Deskripsi" HeaderText="Deskripsi"  />
+                                                    <asp:BoundField DataField="UserName" SortExpression="UserName" HeaderText="ID Pengguna"  />
+                                                    <asp:BoundField DataField="Tanggal" SortExpression="Tanggal" HeaderText="Tanggal"  />
 
                                                 </Columns>
                                                 <PagerSettings Position="Top" />
@@ -233,6 +152,8 @@
                                             </asp:GridView>
 									    </div>
                                     </asp:panel>
+
+
 							    </div>
                             </form>
 						</div>
@@ -291,7 +212,7 @@
 	    }
 
 	    focusMethod1 = function getFocus() {
-	        document.getElementById("rbJenis9").checked = true;
+	        document.getElementById("rbLog9").checked = true;
 	    }
 	    // MAterial Date picker    
 	    $('#txtTanggal').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY', weekStart: 0, time: false });

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="agendain.aspx.vb" Inherits="agendain" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="divisi.aspx.vb" Inherits="divisi" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -102,23 +102,23 @@
             <div class="container-fluid">
 <%--                <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
-                        <h3 class="text-themecolor m-b-0 m-t-0">Agenda Masuk</h3>
+                        <h3 class="text-themecolor m-b-0 m-t-0">Divisi</h3>
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="javascript:void(0)">Home</a></li>
-                            <li class="breadcrumb-item active">Agenda Masuk</li>
+                            <li class="breadcrumb-item active">Divisi</li>
                         </ol>
                     </div>
-                </div>--%>
-
+                </div>
+--%>
                 <div class="row">
                     <div class="col-lg-12 col-xlg-12 col-md-12">
                         <div class="card">
                             <form id="form1" runat="server">
                                 <asp:Literal ID="ltAlert" runat="server"></asp:Literal>
 							    <div class="card-block">
-                                    <h2 class="card-title">Agenda Masuk</h2>
+                                    <h2 class="card-title">Divisi</h2>
                                     <h6 class="card-subtitle italic"><asp:Label ID="lblHeader" runat="server" 
-                                            Text="Daftar Agenda Masuk"></asp:Label></h6> 
+                                            Text="Daftar Divisi"></asp:Label></h6> 
 							    </div>
 
                                 <div class="card-block">
@@ -127,71 +127,18 @@
                                     
                                     <asp:panel id="pnlInputData" runat="server" visible="false" >
                                         <div class="form-material m-t-0 row">
-							                <div class="form-group required col-md-3 m-t-30">
-                                                <label>Tanggal Terima</label>
-                                                <asp:TextBox ID="txtTanggal" runat="server" required=""  class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-							                <div class="form-group required col-md-3 m-t-30">
-                                                <label>Tanggal Surat</label>
-                                                <asp:TextBox ID="txtTglSurat" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-								            <div class="form-group required col-md-3 m-t-30">
-									            <label>Jenis</label>
-                                                <asp:DropDownList ID="ddlJenis" required="" runat="server" 
-                                                    class="form-control form-control-line" >
-                                                </asp:DropDownList>								            
-                                            </div>
-								            <div class="form-group required col-md-3 m-t-30">
-									            <label>Tingkat</label>
-                                                <asp:DropDownList ID="ddlTingkat" required="" runat="server" 
-                                                    class="form-control form-control-line" >
-                                                </asp:DropDownList>								            
-                                            </div>
-
-							                <div class="form-group required col-md-3 m-t-30">
-                                                <label>No. Surat</label>
-                                                <asp:TextBox ID="txtNomor" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-							                <div class="form-group required col-md-3 m-t-30">
-                                                <label>No. Agenda</label>
-                                                <asp:TextBox ID="txtNoAgenda" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
 							                <div class="form-group required col-md-6 m-t-30">
-                                                <label>Dari</label>
-                                                <asp:TextBox ID="txtDari" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
+                                                <label>Divisi</label>
+                                                <asp:TextBox ID="txtDivisi" runat="server" required=""  class="form-control form-control-line" ></asp:TextBox>
                                             </div>
-							                <div class="form-group required col-md-12 m-t-30">
-                                                <label>Perihal</label>
-                                                <asp:TextBox ID="txtPerihal" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-							                <div class="form-group required col-md-12 m-t-30">
-                                                <label>Ringkasan Isi</label>
-                                                <asp:TextBox ID="txtRingkasan" TextMode="MultiLine" Rows="8" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
-							                <div class="form-group col-md-4 m-t-30">
-                                                <label>Lampiran 1</label>
-                                                <asp:FileUpload ID="fuLamp1" runat="server" class="form-control form-control-line" />
-                                            </div>
-							                <div class="form-group col-md-4 m-t-30">
-                                                <label>Lampiran 2</label>
-                                                <asp:FileUpload ID="fuLamp2" runat="server" class="form-control form-control-line" />
-                                            </div>
-							                <div class="form-group col-md-4 m-t-30">
-                                                <label>Lampiran 3</label>
-                                                <asp:FileUpload ID="fuLamp3" runat="server" class="form-control form-control-line" />
+								            <div class="form-group required col-md-6 m-t-30">
+									            <label>Status</label>
+                                                <asp:DropDownList ID="ddlStatus" required="" runat="server" class="form-control form-control-line" >
+                                                    <asp:ListItem Text="Aktif" Value="1"></asp:ListItem> 
+                                                    <asp:ListItem Text="Tidak Aktif" Value="2"></asp:ListItem> 
+                                                </asp:DropDownList>								            
                                             </div>
 
-										    <div class="form-group col-md-12 m-t-40 m-b-0">
-                                                <filter>Disposisi:</filter>
-										    </div>
-								            <div class="form-group col-md-6 m-t-30">
-									            <label>Disposisi Kepada:</label>
-                                                <asp:TextBox ID="txtDisposisiKe" runat="server" TextMode="MultiLine" Rows="8" class="form-control form-control-line" ></asp:TextBox>
-								            </div>
-							                <div class="form-group col-md-6 m-t-30">
-								                <label>Isi Disposisi</label>
-                                                <asp:TextBox ID="txtIsiDisposisi" runat="server" TextMode="MultiLine" Rows="8" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
                                             <div class="form-group col-md-12 m-t-30 m-b-30">
                                                 <asp:Button ID="btnSave" runat="server" Text="Simpan" class="btn btn-danger" type="submit" />
                                                 <asp:Button ID="btnCancel" runat="server" Text="Batal" class="btn btn-danger" CausesValidation ="false" formnovalidate="formnovalidate"  />
@@ -203,80 +150,22 @@
                                         <div>
                                             <asp:LinkButton ID="lnkAddNew" runat="server" class="btn btn-danger waves-effect waves-dark" aria-expanded="false"><i class="mdi mdi-open-in-new"></i><span class="hide-menu"> Tambah Baru</span></asp:LinkButton>
                                         </div>
-                                        <div class="form-material m-t-0 row">
-										    <div class="form-group col-md-12 m-t-20">
-                                                <filter>Filter Data:</filter>
-										    </div>
-								            <div class="form-group col-md-3 m-t-10">
-									            <label>Jenis Dokumen</label>
-                                                <asp:DropDownList ID="ddlFilterJenis" runat="server" 
-                                                    class="form-control form-control-line" >
-                                                </asp:DropDownList>								            
-                                            </div>
-										    <div class="form-group col-md-3 m-t-10">
-											    <label>Perihal</label>
-                                                <asp:TextBox ID="txtFilterPerihal" runat="server" class="form-control form-control-line"></asp:TextBox>
-										    </div>
-										    <div class="form-group col-md-3 m-t-10">
-											    <label>Ringkasan</label>
-                                                <asp:TextBox ID="txtFilterRingkasan" runat="server" class="form-control form-control-line"></asp:TextBox>
-										    </div>
-										    <div class="form-group col-md-3 m-t-10">
-										        <div class="button-box">
-                                                    <asp:Button ID="btnRetrieve" runat="server" Text="Tampilkan" class="btn btn-danger"  />
-									            </div>
-										    </div>
-                                        </div>                                        
 
                                         <div class="table-responsive">
-                                            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" 
+                                            <asp:GridView ID="gvData" runat="server" AutoGenerateColumns="False" OnSorting="gv_Sorting"
                                                 AllowPaging="True" GridLines="None" 
                                                 CssClass="table table-bordered m-t-15 table-hover contact-list nomargin" PageSize="500" 
-                                                AllowSorting="true" OnSorting="gv_Sorting" >                
+                                                AllowSorting="true" >                
                                                 <AlternatingRowStyle CssClass="alt" />
                                                 <Columns>
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="BtnEdit" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Ubah"   
+                                                                CommandArgument='<%#Eval("DivisiID")%>' CommandName="Ubah"   
                                                                 ImageUrl="images/icon/edit.png" ToolTip="Edit Data" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
                                                     </asp:TemplateField>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="BtnDelete" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Hapus"   
-                                                                ImageUrl="images/icon/delete.png" ToolTip="Delete Data" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
-                                                    </asp:TemplateField>
-
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="BtnLamp1" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Lampiran1"   
-                                                                ImageUrl="images/icon/attachment.png" ToolTip="Lampiran 1" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="BtnLamp2" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Lampiran2"   
-                                                                ImageUrl="images/icon/attachment.png" ToolTip="Lampiran 2" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
-                                                    </asp:TemplateField>
-                                                    <asp:TemplateField>
-                                                        <ItemTemplate>
-                                                            <asp:ImageButton ID="BtnLamp3" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Lampiran3"   
-                                                                ImageUrl="images/icon/attachment.png" ToolTip="Lampiran 3" />
-                                                        </ItemTemplate>
-                                                        <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
-                                                    </asp:TemplateField>
-
 
                                                     <asp:TemplateField HeaderText="No">
                                                         <ItemTemplate>
@@ -286,13 +175,9 @@
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="25px" />
                                                     </asp:TemplateField>
 
-                                                    <asp:BoundField DataField="Tanggal" SortExpression="Tanggal" HeaderText="Tanggal" DataFormatString="{0:d}" />
-                                                    <asp:BoundField DataField="TanggalSurat" SortExpression="TanggalSurat" HeaderText="Tanggal Surat" DataFormatString="{0:d}" />
-                                                    <asp:BoundField DataField="NoSurat" SortExpression="NoSurat" HeaderText="No. Surat" />
-                                                    <asp:BoundField DataField="NoAgenda" SortExpression="NoAgenda" HeaderText="No. Agenda" />
-                                                    <asp:BoundField DataField="Dari" SortExpression="Dari" HeaderText="Dari" />
-                                                    <asp:BoundField DataField="Perihal" SortExpression="Perihal" HeaderText="Perihal" />
-
+                                                    <asp:BoundField DataField="Divisi" SortExpression="Divisi" HeaderText="Divisi/Fungsi" />
+                                                    <asp:BoundField DataField="Status" SortExpression="Status" HeaderText="Status"  />
+                                                    <asp:BoundField DataField="UpdateDate" SortExpression="UpdateDate" HeaderText="Last Update"  />
                                                 </Columns>
                                                 <PagerSettings Position="Top" />
                                                 <PagerStyle CssClass="pgr" />
@@ -354,8 +239,18 @@
     <script type="text/javascript" src="assets/plugins/moment/moment.js"></script>
 
 	<script type="text/javascript">
+	    focusMethod = function getFocus() {
+	        document.getElementById("txtLainnya").focus();
+	    }
+
+	    focusMethod1 = function getFocus() {
+	        document.getElementById("rbDivisi9").checked = true;
+	    }
+	    // MAterial Date picker    
 	    $('#txtTanggal').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY', weekStart: 0, time: false });
 	    $('#txtTglSurat').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY', weekStart: 0, time: false });
+	    $('#txtTglPeringatan').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY', weekStart: 0, time: false });
+
 	</script>
 
     <script type="text/javascript">

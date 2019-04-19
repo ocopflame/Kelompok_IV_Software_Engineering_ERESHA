@@ -45,7 +45,7 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(images/login.jpg);">
+    <section id="wrapper" class="login-register login-sidebar" style="background-image:url(images/siti.jpg);">
         <div class="login-box card">
             <div class="card-body">
                 <form runat="server" class="form-horizontal form-material" id="loginform" >

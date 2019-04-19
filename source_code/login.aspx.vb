@@ -13,13 +13,13 @@ Partial Class login
         Dim ODBCCmd As OdbcCommand
         Dim Reader As OdbcDataReader
 
-        If Not txtUserID.Text.ToString = "" Then
-            If Not System.Text.RegularExpressions.Regex.IsMatch(txtUserID.Text.ToString, "^[a-zA-Z0-9_]{3,16}$") Then
-                lblErrMessage.Text = "User ID tidak diperbolehkan."
-                Exit Sub
-            End If
-        Else
-            lblErrMessage.Text = "User ID tidak diperbolehkan."
+        If Not System.Text.RegularExpressions.Regex.IsMatch(txtUserID.Text.ToString, "^[a-zA-Z0-9_]{3,16}$") Then
+            lblErrMessage.Text = "ID Pengguna tidak valid."
+            Exit Sub
+        End If
+
+        If Not System.Text.RegularExpressions.Regex.IsMatch(txtPassword.Text.ToString, "^[a-zA-Z0-9_]{3,16}$") Then
+            lblErrMessage.Text = "Password tidak valid."
             Exit Sub
         End If
 
@@ -27,25 +27,34 @@ Partial Class login
             ODBCConn.Open()
             Dim strSQL As String
             strSQL = " SELECT * FROM user "
-            strSQL += " WHERE UserName=? AND Password=? "
+            strSQL += " WHERE UserName=? AND Password=? AND StatusID=1"
 
             ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
             ODBCCmd.Parameters.AddWithValue("@UserName", txtUserID.Text)
-            ODBCCmd.Parameters.AddWithValue("@Password", txtPassword.Text)
+            ODBCCmd.Parameters.AddWithValue("@Password", Encrypt(txtPassword.Text))
+
             Reader = ODBCCmd.ExecuteReader
 
             If Reader.HasRows Then
                 Reader.Read()
                 With Reader
-                    SetCookies("UserID", .Item("UserID").ToString)
-                    SetCookies("UserName", .Item("UserName").ToString)
-                    SetCookies("NamaUser", .Item("NamaUser").ToString)
-                    SetCookies("Password", .Item("Password").ToString)
+                    SetCookies("e_filing_DivisiID", .Item("DivisiID").ToString)
+                    SetCookies("e_filing_UserID", .Item("UserID").ToString)
+                    SetCookies("e_filing_UserName", .Item("UserName").ToString)
+                    SetCookies("e_filing_NamaUser", .Item("NamaUser").ToString)
+                    SetCookies("e_filing_Password", .Item("Password").ToString)
+                    SetCookies("e_filing_OtorisasiID", .Item("OtorisasiID").ToString)
+                    SetCookies("e_filing_StatusID", .Item("StatusID").ToString)
+
+                    Select Case .Item("OtorisasiID").ToString
+                        Case "1" : Response.Redirect("divisi.aspx")
+                        Case "2" : Response.Redirect("agendain.aspx")
+                    End Select
                 End With
+
                 Reader.Close()
                 ODBCCmd.Dispose()
                 ODBCConn.Close()
-                Response.Redirect("agendain.aspx")
             Else
                 lblErrMessage.Text = "User ID atau Password tidak benar"
                 txtUserID.Focus()
@@ -59,7 +68,16 @@ Partial Class login
     End Sub
 
     Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
-        txtUserID.Focus()
+        If Not Page.IsPostBack Then
+            SetCookies("e_filing_DivisiID", "")
+            SetCookies("e_filing_UserID", "")
+            SetCookies("e_filing_UserName", "")
+            SetCookies("e_filing_NamaUser", "")
+            SetCookies("e_filing_Password", "")
+            SetCookies("e_filing_OtorisasiID", "")
+            SetCookies("e_filing_StatusID", "")
+            txtUserID.Focus()
+        End If
     End Sub
 
     Protected Sub SetCookies(ByVal CookieName As String, ByVal CookieValue As String)
@@ -67,4 +85,14 @@ Partial Class login
         Cookie.Value = CookieValue
         Response.Cookies.Add(Cookie)
     End Sub
+
+    Protected Function GetCookies(ByVal CookieName As String) As String
+        Dim Cookie As HttpCookie = Request.Cookies(CookieName)
+        If Not Cookie Is Nothing Then
+            Return Cookie.Value
+        Else
+            Return ""
+        End If
+    End Function
+
 End Class

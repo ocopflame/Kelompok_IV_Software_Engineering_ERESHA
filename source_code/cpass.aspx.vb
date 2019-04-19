@@ -20,11 +20,11 @@ Partial Class cpass
         lblErrMessage.Text = ""
 
         If Not Page.IsPostBack Then
-            If GetCookies("UserName") = "" Then
+            If GetCookies("e_filing_UserName").ToString = "" Then
                 Response.Redirect("login.aspx")
             End If
 
-            lblNamaUser.Text = "Hi, " + GetCookies("NamaUser").ToString
+            lblNamaUser.Text = "Hi, " + GetCookies("e_filing_NamaUser").ToString
 
             txtPasswordLama.Focus()
         End If
@@ -34,8 +34,12 @@ Partial Class cpass
 
         lblErrMessage.Text = ""
 
-        If Trim(txtPasswordLama.Text) <> GetCookies("Password") Then
-            lblErrMessage.Text = "Password Lama salah." : Exit Sub
+        If Encrypt(Trim(txtPasswordLama.Text)) <> GetCookies("e_filing_Password").ToString Then
+            lblErrMessage.Text = "Password saat ini salah." : Exit Sub
+        End If
+
+        If Trim(txtPasswordLama.Text) = Trim(txtPasswordBaru.Text) Then
+            lblErrMessage.Text = "Password baru tidak boleh sama dengan password saat ini." : Exit Sub
         End If
 
         If Not txtPasswordBaru.Text.ToString = "" Then
@@ -55,7 +59,7 @@ Partial Class cpass
 
         Try
             ODBCConn.Open()
-            StrSQL = " UPDATE user SET password='" + Trim(txtPasswordBaru.Text) + "'"
+            StrSQL = " UPDATE user SET password='" + Encrypt(Trim(txtPasswordBaru.Text)) + "'"
             StrSQL = StrSQL + " WHERE UserID='" + GetCookies("UserID") + "'"
 
             ODBCCmd = New OdbcCommand(StrSQL, ODBCConn)
@@ -64,7 +68,7 @@ Partial Class cpass
             ODBCConn.Close()
 
             ltAlert.Text = DataSaved()
-            SetCookies("Password", Trim(txtPasswordBaru.Text))
+            SetCookies("Password", Encrypt(Trim(txtPasswordBaru.Text)))
 
             txtPasswordLama.Text = ""
             txtPasswordBaru.Text = ""
@@ -107,7 +111,4 @@ Partial Class cpass
         End If
     End Sub
 
-    Protected Sub btnCancel_Click(sender As Object, e As System.EventArgs) Handles btnCancel.Click
-        Response.Redirect("agendain.aspx")
-    End Sub
 End Class

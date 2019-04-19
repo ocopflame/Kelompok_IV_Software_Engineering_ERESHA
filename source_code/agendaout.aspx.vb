@@ -8,7 +8,7 @@ Imports System.Xml
 Imports GlobalClass
 Imports Crypto
 
-Partial Class agendain
+Partial Class agendaout
     Inherits System.Web.UI.Page
     Private StrConn As String = ConfigurationManager.ConnectionStrings("MyConn").ConnectionString
 
@@ -141,11 +141,11 @@ Partial Class agendain
 
             Select Case e.CommandName
                 Case "Ubah"
-                    lblHeader.Text = "Edit Data Agenda Masuk"
+                    lblHeader.Text = "Edit Data Agenda Keluar"
 
                     Dim IdData As Integer = Convert.ToInt32(e.CommandArgument)
                     hfIdData.Value = IdData.ToString
-                    strSQL = " SELECT * FROM incoming WHERE IncomingID=" & IdData
+                    strSQL = " SELECT * FROM outgoing WHERE OutgoingID=" & IdData
                     ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
                     Reader = ODBCCmd.ExecuteReader()
                     Reader.Read()
@@ -156,11 +156,9 @@ Partial Class agendain
                     ddlTingkat.SelectedValue = Reader.Item("TingkatID")
                     txtNomor.Text = Reader.Item("NoSurat").ToString
                     txtNoAgenda.Text = Reader.Item("NoAgenda").ToString
-                    txtDari.Text = Reader.Item("Dari").ToString
+                    txtKepada.Text = Reader.Item("Kepada").ToString
                     txtPerihal.Text = Reader.Item("Perihal").ToString
                     txtRingkasan.Text = Reader.Item("Ringkasan").ToString
-                    txtDisposisiKe.Text = Reader.Item("DisposisiKe").ToString
-                    txtIsiDisposisi.Text = Reader.Item("IsiDisposisi").ToString
 
                     pnlInputData.Visible = True
                     pnlGridData.Visible = False
@@ -168,7 +166,7 @@ Partial Class agendain
                 Case "Hapus"
                     Dim IdData As Integer = Convert.ToInt32(e.CommandArgument)
 
-                    strSQL = " DELETE FROM incoming WHERE IncomingID=" + IdData.ToString
+                    strSQL = " DELETE FROM outgoing WHERE outgoingID=" + IdData.ToString
                     ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
                     ODBCCmd.ExecuteNonQuery()
 
@@ -177,7 +175,7 @@ Partial Class agendain
 
                 Case "Lampiran1"
                     Dim IdData As Integer = Convert.ToInt32(e.CommandArgument)
-                    strSQL = " SELECT Lampiran1 FROM incoming WHERE IncomingID=" & IdData
+                    strSQL = " SELECT Lampiran1 FROM outgoing WHERE OutgoingID=" & IdData
                     ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
                     Reader = ODBCCmd.ExecuteReader()
                     Reader.Read()
@@ -198,7 +196,7 @@ Partial Class agendain
 
                 Case "Lampiran2"
                     Dim IdData As Integer = Convert.ToInt32(e.CommandArgument)
-                    strSQL = " SELECT Lampiran2 FROM incoming WHERE IncomingID=" & IdData
+                    strSQL = " SELECT Lampiran2 FROM outgoing WHERE OutgoingID=" & IdData
                     ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
                     Reader = ODBCCmd.ExecuteReader()
                     Reader.Read()
@@ -219,7 +217,7 @@ Partial Class agendain
 
                 Case "Lampiran3"
                     Dim IdData As Integer = Convert.ToInt32(e.CommandArgument)
-                    strSQL = " SELECT Lampiran3 FROM incoming WHERE IncomingID=" & IdData
+                    strSQL = " SELECT Lampiran3 FROM outgoing WHERE OutgoingID=" & IdData
                     ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
                     Reader = ODBCCmd.ExecuteReader()
                     Reader.Read()
@@ -283,7 +281,7 @@ Partial Class agendain
             ODBCConn.Open()
             Dim strSQL As String
 
-            strSQL = " SELECT * FROM incoming "
+            strSQL = " SELECT * FROM outgoing "
             strSQL += " WHERE DivisiID=" + GetCookies("e_filing_DivisiID").ToString
 
             If ddlFilterJenis.SelectedValue.ToString <> "0" Then
@@ -291,11 +289,11 @@ Partial Class agendain
             End If
 
             If txtFilterPerihal.Text <> "" Then
-                strSQL += " AND perihal LIKE '%" + Replace(txtFilterPerihal.Text, "'", "''") + "%'"
+                strSQL += " AND Perihal LIKE '%" + Replace(txtFilterPerihal.Text, "'", "''") + "%'"
             End If
 
             If txtFilterRingkasan.Text <> "" Then
-                strSQL += " AND perihal LIKE '%" + Replace(txtFilterRingkasan.Text, "'", "''") + "%'"
+                strSQL += " AND Ringkasan LIKE '%" + Replace(txtFilterRingkasan.Text, "'", "''") + "%'"
             End If
 
             ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
@@ -325,11 +323,12 @@ Partial Class agendain
     End Sub
 
     Protected Sub btnCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        lblHeader.Text = "Daftar Agenda Masuk"
+        lblHeader.Text = "Daftar Agenda Keluar"
 
         pnlInputData.Visible = False
         pnlGridData.Visible = True
     End Sub
+
 
     Protected Sub btnRetrieve_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnRetrieve.Click
         ShowGridData()
@@ -375,17 +374,16 @@ Partial Class agendain
         ddlTingkat.SelectedIndex = 0
         txtNomor.Text = ""
         txtNoAgenda.Text = ""
-        txtDari.Text = ""
+        txtKepada.Text = ""
         txtPerihal.Text = ""
         txtRingkasan.Text = ""
-        txtDisposisiKe.Text = ""
-        txtIsiDisposisi.Text = ""
         txtTanggal.Text = Now.Date
         txtTanggal.Focus()
+
+        lblHeader.Text = "Tambah Data Agenda Keluar"
+
         pnlGridData.Visible = False
         pnlInputData.Visible = True
-        lblHeader.Text = "Tambah Data Agenda Masuk"
-
     End Sub
 
     Protected Sub btnSave_Click(sender As Object, e As System.EventArgs) Handles btnSave.Click
@@ -410,7 +408,7 @@ Partial Class agendain
                 StrDBLamp1 = NamaFile
                 fuLamp1.PostedFile.SaveAs(Server.MapPath("~/attachment/") + NamaFile)
             Else
-                lblErrMessage.Text = "Lampiran harus menggunakan format pdf dan jpg."
+                lblErrMessage.Text = "Lampiran harus menggunakan format pdf atau jpg."
                 Exit Sub
             End If
         End If
@@ -434,7 +432,7 @@ Partial Class agendain
                 StrDBLamp2 = NamaFile
                 fuLamp2.PostedFile.SaveAs(Server.MapPath("~/attachment/") + NamaFile)
             Else
-                lblErrMessage.Text = "Lampiran harus menggunakan format pdf dan jpg."
+                lblErrMessage.Text = "Lampiran harus menggunakan format pdf atau jpg."
                 Exit Sub
             End If
         End If
@@ -458,7 +456,7 @@ Partial Class agendain
                 StrDBLamp3 = NamaFile
                 fuLamp3.PostedFile.SaveAs(Server.MapPath("~/attachment/") + NamaFile)
             Else
-                lblErrMessage.Text = "Lampiran harus menggunakan format pdf dan jpg."
+                lblErrMessage.Text = "Lampiran harus menggunakan format pdf atau jpg."
                 Exit Sub
             End If
         End If
@@ -472,13 +470,13 @@ Partial Class agendain
             ODBCConn.Open()
 
             If hfIdData.Value.ToString = "" Then
-                StrSQL = " INSERT INTO incoming (Tanggal, TanggalSurat, JenisID, TingkatID, Dari, NoSurat, NoAgenda, "
-                StrSQL += " Perihal, Ringkasan, DisposisiKe, IsiDisposisi, "
+                StrSQL = " INSERT INTO outgoing (Tanggal, TanggalSurat, JenisID, TingkatID, Kepada, NoSurat, NoAgenda, "
+                StrSQL += " Perihal, Ringkasan, "
                 StrSQL += " Lampiran1, Lampiran2, Lampiran3, UserName, DivisiID)  "
-                StrSQL += " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,'" + GetCookies("e_filing_UserName").ToString + "'," + GetCookies("e_filing_DivisiID").ToString + ")"
+                StrSQL += " VALUES (?,?,?,?,?,?,?,?,?,?,?,?,'" + GetCookies("e_filing_UserName").ToString + "'," + GetCookies("e_filing_DivisiID").ToString + ")"
             Else
-                StrSQL = " UPDATE incoming SET Tanggal=?, TanggalSurat=?, JenisID=?, TingkatID=?, Dari=?, NoSurat=?, NoAgenda=?, "
-                StrSQL += " Perihal=?, Ringkasan=?, DisposisiKe=?, IsiDisposisi=?, "
+                StrSQL = " UPDATE outgoing SET Tanggal=?, TanggalSurat=?, JenisID=?, TingkatID=?, Kepada=?, NoSurat=?, NoAgenda=?, "
+                StrSQL += " Perihal=?, Ringkasan=?, "
                 If Trim(StrDBLamp1) <> "" Then
                     StrSQL += " Lampiran1='" + Trim(StrDBLamp1).ToString + "',"
                 End If
@@ -489,7 +487,7 @@ Partial Class agendain
                     StrSQL += " Lampiran3='" + Trim(StrDBLamp3).ToString + "',"
                 End If
                 StrSQL += " Username='" + GetCookies("e_filing_UserName").ToString + "'"
-                StrSQL += " WHERE IncomingID=" + hfIdData.Value.ToString
+                StrSQL += " WHERE outgoingID=" + hfIdData.Value.ToString
             End If
 
             ODBCCmd = New OdbcCommand(StrSQL, ODBCConn)
@@ -498,13 +496,11 @@ Partial Class agendain
                 .Parameters.Add("@TanggalSurat", OdbcType.Date).Value = Trim(txtTglSurat.Text)
                 .Parameters.AddWithValue("@JenisID", ddlJenis.SelectedValue)
                 .Parameters.AddWithValue("@TingkatID", ddlTingkat.SelectedValue)
-                .Parameters.AddWithValue("@Dari", Trim(txtDari.Text))
+                .Parameters.AddWithValue("@Dari", Trim(txtKepada.Text))
                 .Parameters.AddWithValue("@NoSurat", Trim(txtNomor.Text))
                 .Parameters.AddWithValue("@NoAgenda", Trim(txtNoAgenda.Text))
                 .Parameters.AddWithValue("@Perihal", Trim(txtPerihal.Text))
                 .Parameters.AddWithValue("@Ringkasan", Trim(txtRingkasan.Text))
-                .Parameters.AddWithValue("@DisposisiKe", Trim(txtDisposisiKe.Text))
-                .Parameters.AddWithValue("@IsiDisposisi", Trim(txtIsiDisposisi.Text))
                 .Parameters.AddWithValue("@Lampiran1", Trim(StrDBLamp1))
                 .Parameters.AddWithValue("@Lampiran2", Trim(StrDBLamp2))
                 .Parameters.AddWithValue("@Lampiran3", Trim(StrDBLamp3))
@@ -515,9 +511,7 @@ Partial Class agendain
 
             ltAlert.Text = DataSaved()
             ShowGridData()
-
-            lblHeader.Text = "Daftar Agenda Masuk"
-
+            lblHeader.Text = "Daftar Agenda Keluar"
             pnlInputData.Visible = False
             pnlGridData.Visible = True
 

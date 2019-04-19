@@ -80,7 +80,10 @@
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <!-- #include file ="menu.htm" -->
+                        <%Select Case GetCookies("e_filing_OtorisasiID").ToString%>
+                            <%Case "1"%> <!-- #include file ="m_admin.htm" -->
+                            <%Case "2"%> <!-- #include file ="m_user.htm" -->
+                        <%End Select%>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->
@@ -97,7 +100,7 @@
 
         <div class="page-wrapper">
             <div class="container-fluid">
-                <div class="row page-titles">
+<%--                <div class="row page-titles">
                     <div class="col-md-5 col-8 align-self-center">
                         <h3 class="text-themecolor m-b-0 m-t-0">Ubah Password</h3>
                         <ol class="breadcrumb">
@@ -106,8 +109,8 @@
                         </ol>
                     </div>
                 </div>
+--%>
                 <div class="row">
-				
                     <div class="col-lg-12 col-xlg-12 col-md-12">
                         <div class="card">
                             <form id="form1" runat="server">
@@ -125,21 +128,20 @@
                                     <asp:panel id="pnlInputData" runat="server" >
                                         <div class="form-material m-t-0 row">
 								            <div class="form-group required col-md-12 m-t-30">
-									            <label>Password Lama</label>
-                                                <asp:TextBox ID="txtPasswordLama" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
+									            <label>Password Saat Ini</label>
+                                                <asp:TextBox ID="txtPasswordLama" runat="server" required="" class="form-control form-control-line" TextMode="Password" ></asp:TextBox>
 								            </div>
 								            <div class="form-group required col-md-12 m-t-30">
 									            <label>Password Baru</label>
-                                                <asp:TextBox ID="txtPasswordBaru" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
+                                                <asp:TextBox ID="txtPasswordBaru" runat="server" required="" class="form-control form-control-line" TextMode="Password" ></asp:TextBox>
 								            </div>
 							                <div class="form-group required col-md-12 m-t-30">
-								                <label>Confirm Password Baru</label>
-                                                <asp:TextBox ID="txtConfirmPasswordBaru" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
+								                <label>Ulangi Password Baru</label>
+                                                <asp:TextBox ID="txtConfirmPasswordBaru" runat="server" required="" class="form-control form-control-line" TextMode="Password" ></asp:TextBox>
                                             </div>
 
                                             <div class="form-group col-md-12 m-t-30 m-b-30">
                                                 <asp:Button ID="btnSave" runat="server" Text="Simpan" class="btn btn-danger" type="submit" />
-                                                <asp:Button ID="btnCancel" runat="server" Text="Batal" class="btn btn-danger" CausesValidation ="false" formnovalidate="formnovalidate"  />
                                             </div>
                                         </div>
                                     </asp:panel>

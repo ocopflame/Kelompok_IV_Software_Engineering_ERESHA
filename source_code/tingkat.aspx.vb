@@ -8,7 +8,7 @@ Imports System.Xml
 Imports GlobalClass
 Imports Crypto
 
-Partial Class User
+Partial Class tingkat
     Inherits System.Web.UI.Page
     Private StrConn As String = ConfigurationManager.ConnectionStrings("MyConn").ConnectionString
 
@@ -29,44 +29,9 @@ Partial Class User
             End If
 
             lblNamaUser.Text = "Hi, " + GetCookies("e_filing_NamaUser").ToString
-
-            ShowDivisi()
             ShowGridData()
 
         End If
-    End Sub
-
-    Sub ShowDivisi()
-
-        Dim ODBCConn As OdbcConnection = New OdbcConnection(StrConn)
-        Dim ODBCCmd As OdbcCommand
-
-        Try
-            ODBCConn.Open()
-            Dim strSQL As String
-
-            strSQL = " SELECT * FROM divisi WHERE StatusID=1 "
-
-            ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
-            Dim dt As New DataTable
-            Dim daData As New OdbcDataAdapter(ODBCCmd)
-            dt.Clear()
-            daData.Fill(dt)
-            ODBCConn.Close()
-
-            With ddlDivisi
-                .DataSource = dt
-                .DataTextField = "Divisi"
-                .DataValueField = "DivisiID"
-                .DataBind()
-                .SelectedIndex = 0
-            End With
-
-        Catch ex As Exception
-            lblErrMessage.Text = ex.Message.ToString
-        Finally
-            ODBCConn.Close()
-        End Try
     End Sub
 
     Protected Sub gv_Sorting(ByVal sender As Object, ByVal e As GridViewSortEventArgs)
@@ -97,24 +62,18 @@ Partial Class User
 
             Select Case e.CommandName
                 Case "Ubah"
-                    lblHeader.Text = "Edit Data Pengguna"
+                    lblHeader.Text = "Edit Data Tingkat Dokumen"
 
                     Dim IdData As Integer = Convert.ToInt32(e.CommandArgument)
                     hfIdData.Value = IdData.ToString
-                    strSQL = " SELECT * FROM user WHERE UserID=" & IdData
+                    strSQL = " SELECT * FROM Tingkat WHERE TingkatID=" & IdData
                     ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
                     Reader = ODBCCmd.ExecuteReader()
                     Reader.Read()
 
-                    ddlDivisi.SelectedValue = CInt(Reader.Item("DivisiID"))
-                    txtUserID.Text = Reader.Item("UserName").ToString
-                    txtNamaUser.Text = Reader.Item("NamaUser").ToString
-                    txtPassword.Text = Reader.Item("Password").ToString
-                    txtConfirmPassword.Text = Reader.Item("Password").ToString
-                    ddlOtorisasi.SelectedValue = CInt(Reader.Item("OtorisasiID"))
+                    txtTingkat.Text = Reader.Item("Tingkat").ToString
                     ddlStatus.SelectedValue = CInt(Reader.Item("StatusID"))
-                    ddlDivisi.Focus()
-                    txtUserID.ReadOnly = True
+
                     pnlInputData.Visible = True
                     pnlGridData.Visible = False
 
@@ -122,6 +81,7 @@ Partial Class User
                     Exit Sub
 
             End Select
+
             ODBCConn.Close()
 
         Catch ex As Exception
@@ -158,19 +118,9 @@ Partial Class User
             ODBCConn.Open()
             Dim strSQL As String
 
-            strSQL = " SELECT a.*, b.Divisi, "
-            strSQL += " CASE WHEN a.OtorisasiID=1 THEN 'Administrator' WHEN a.OtorisasiID=2 THEN 'Super User' ELSE 'User' END AS Otorisasi, "
-            strSQL += " CASE WHEN a.StatusID=1 THEN 'Aktif' ELSE 'Tidak Aktif' END AS Status "
-            strSQL += " FROM user a JOIN Divisi b ON a.DivisiID=b.DivisiID "
-            strSQL += " WHERE NOT a.UserName='sysadmin' "
-
-            If txtFilterUserName.Text <> "" Then
-                strSQL += " AND a.UserName LIKE '%" + Replace(txtFilterUserName.Text, "'", "''") + "%'"
-            End If
-
-            If txtFilterNamaUser.Text <> "" Then
-                strSQL += " AND a.NamaUser LIKE '%" + Replace(txtFilterNamaUser.Text, "'", "''") + "%'"
-            End If
+            strSQL = " SELECT *, "
+            strSQL += " CASE WHEN StatusID=1 THEN 'Aktif' ELSE 'Tidak Aktif' END AS Status "
+            strSQL += " FROM Tingkat "
 
             ODBCCmd = New OdbcCommand(strSQL, ODBCConn)
             Dim daData As New OdbcDataAdapter(ODBCCmd)
@@ -183,7 +133,7 @@ Partial Class User
             End If
 
             If ViewState("Sorting") = "" Then
-                ViewState("Sorting") = "UserName ASC"
+                ViewState("Sorting") = "Tingkat ASC"
             End If
 
             dt.DefaultView.Sort = ViewState("Sorting")
@@ -199,15 +149,11 @@ Partial Class User
     End Sub
 
     Protected Sub btnCancel_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnCancel.Click
-        lblHeader.Text = "Daftar Pengguna"
+        lblHeader.Text = "Daftar Tingkat Dokumen"
         pnlInputData.Visible = False
         pnlGridData.Visible = True
     End Sub
 
-
-    Protected Sub btnRetrieve_Click(ByVal sender As Object, ByVal e As System.EventArgs) Handles btnRetrieve.Click
-        ShowGridData()
-    End Sub
 
     '################ GENERAL ################
 
@@ -237,18 +183,12 @@ Partial Class User
     End Sub
 
     Protected Sub lnkAddNew_Click(sender As Object, e As System.EventArgs) Handles lnkAddNew.Click
-        lblHeader.Text = "Tambah Data Pengguna"
+        lblHeader.Text = "Tambah Data Tingkat Dokumen"
         hfIdData.Value = ""
-        ddlDivisi.SelectedIndex = 0
-        txtUserID.Text = ""
-        txtNamaUser.Text = ""
-        txtPassword.Text = ""
-        txtConfirmPassword.Text = ""
-        ddlOtorisasi.SelectedIndex = 0
-        ddlStatus.SelectedIndex = 0
+        txtTingkat.Text = ""
+        ddlStatus.SelectedValue = 1
 
-        txtUserID.ReadOnly = False
-        ddlDivisi.Focus()
+        txtTingkat.Focus()
         pnlGridData.Visible = False
         pnlInputData.Visible = True
     End Sub
@@ -256,22 +196,9 @@ Partial Class User
     Protected Sub btnSave_Click(sender As Object, e As System.EventArgs) Handles btnSave.Click
         lblErrMessage.Text = ""
 
-        If Not txtUserID.Text.ToString = "" Then
-            If Not System.Text.RegularExpressions.Regex.IsMatch(txtUserID.Text.ToString, "^[a-zA-Z0-9_]{3,16}$") Then
-                lblErrMessage.Text = "User ID mengandung karakter yang tidak diperbolehkan."
-                Exit Sub
-            End If
-        End If
-
-        If Not txtPassword.Text.ToString = "" Then
-            If Not System.Text.RegularExpressions.Regex.IsMatch(txtPassword.Text.ToString, "^[a-zA-Z0-9_]{3,16}$") Then
-                lblErrMessage.Text = "Password mengandung karakter yang tidak diperbolehkan."
-                Exit Sub
-            End If
-        End If
-
-        If txtPassword.Text <> txtConfirmPassword.Text Then
-            lblErrMessage.Text = "Password dengan Confirm Password tidak sama." : Exit Sub
+        If txtTingkat.Text = "" Then
+            lblErrMessage.Text = "Tingkat dokumen harus diisi."
+            Exit Sub
         End If
 
         Dim ODBCConn As OdbcConnection = New OdbcConnection(StrConn)
@@ -282,15 +209,11 @@ Partial Class User
             ODBCConn.Open()
 
             If hfIdData.Value.ToString = "" Then
-                StrSQL = " INSERT INTO user (DivisiID, UserName, NamaUser, Password, OtorisasiID, StatusID, CreateBy, CreateDate, UpdateBy, UpdateDate) "
-                StrSQL += " VALUES (?,?,?,?,?,?,?,?,?,?) "
+                StrSQL = " INSERT INTO Tingkat (Tingkat, StatusID, CreateBy, CreateDate, UpdateBy, UpdateDate) "
+                StrSQL += " VALUES (?,?,?,?,?,?) "
                 ODBCCmd = New OdbcCommand(StrSQL, ODBCConn)
                 With ODBCCmd
-                    .Parameters.AddWithValue("@DivisiID", ddlDivisi.SelectedValue)
-                    .Parameters.AddWithValue("@UserName", Trim(txtUserID.Text))
-                    .Parameters.AddWithValue("@NamaUser", Trim(txtNamaUser.Text))
-                    .Parameters.AddWithValue("@Password", Encrypt(Trim(txtPassword.Text)))
-                    .Parameters.AddWithValue("@OtorisasiID", ddlOtorisasi.SelectedValue)
+                    .Parameters.AddWithValue("@Tingkat", Trim(txtTingkat.Text))
                     .Parameters.AddWithValue("@StatusID", ddlStatus.SelectedValue)
                     .Parameters.AddWithValue("@CreateBy", GetCookies("e_filing_UserName").ToString)
                     .Parameters.Add("@CreateDate", OdbcType.DateTime).Value = Now
@@ -300,15 +223,11 @@ Partial Class User
                 End With
                 ODBCCmd.Dispose()
             Else
-                StrSQL = " UPDATE user SET DivisiID=?, UserName=?, NamaUser=?, Password=?, OtorisasiID=?, StatusID=?, UpdateBy=?, UpdateDate=?"
-                StrSQL += " WHERE UserID=" + hfIdData.Value.ToString
+                StrSQL = " UPDATE Tingkat SET Tingkat=?, StatusID=?, UpdateBy=?, UpdateDate=? "
+                StrSQL += " WHERE TingkatID=" + hfIdData.Value.ToString
                 ODBCCmd = New OdbcCommand(StrSQL, ODBCConn)
                 With ODBCCmd
-                    .Parameters.AddWithValue("@DivisiID", ddlDivisi.SelectedValue)
-                    .Parameters.AddWithValue("@UserName", Trim(txtUserID.Text))
-                    .Parameters.AddWithValue("@NamaUser", Trim(txtNamaUser.Text))
-                    .Parameters.AddWithValue("@Password", Encrypt(Trim(txtPassword.Text)))
-                    .Parameters.AddWithValue("@OtorisasiID", ddlOtorisasi.SelectedValue)
+                    .Parameters.AddWithValue("@Tingkat", Trim(txtTingkat.Text))
                     .Parameters.AddWithValue("@StatusID", ddlStatus.SelectedValue)
                     .Parameters.AddWithValue("@UpdateBy", GetCookies("e_filing_UserName").ToString)
                     .Parameters.Add("@UpdateDate", OdbcType.DateTime).Value = Now
@@ -316,13 +235,12 @@ Partial Class User
                 End With
                 ODBCCmd.Dispose()
             End If
-
             StrSQL = " INSERT INTO Log (Modul, Deskripsi, UserName, Tanggal) VALUES (?,?,?,?) "
             ODBCCmd = New OdbcCommand(StrSQL, ODBCConn)
             With ODBCCmd
-                .Parameters.AddWithValue("@Modul", "Pengguna")
+                .Parameters.AddWithValue("@Modul", "Tingkat")
                 If hfIdData.Value.ToString = "" Then
-                    .Parameters.AddWithValue("@Deskripsi", "Tambah Data User= " + txtUserID.Text)
+                    .Parameters.AddWithValue("@Deskripsi", "Tambah Data tingkat=" + txtTingkat.Text)
                 Else
                     .Parameters.AddWithValue("@Deskripsi", "Edit Data ID=" + hfIdData.Value.ToString)
                 End If
@@ -336,7 +254,7 @@ Partial Class User
             ltAlert.Text = DataSaved()
             ShowGridData()
 
-            lblHeader.Text = "Daftar Pengguna"
+            lblHeader.Text = "Daftar Tingkat Dokumen"
             pnlInputData.Visible = False
             pnlGridData.Visible = True
 

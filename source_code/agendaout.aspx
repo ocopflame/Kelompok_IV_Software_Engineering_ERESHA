@@ -1,4 +1,4 @@
-﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="agendain.aspx.vb" Inherits="agendain" %>
+﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="agendaout.aspx.vb" Inherits="agendaout" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -116,9 +116,9 @@
                             <form id="form1" runat="server">
                                 <asp:Literal ID="ltAlert" runat="server"></asp:Literal>
 							    <div class="card-block">
-                                    <h2 class="card-title">Agenda Masuk</h2>
+                                    <h2 class="card-title">Agenda Keluar</h2>
                                     <h6 class="card-subtitle italic"><asp:Label ID="lblHeader" runat="server" 
-                                            Text="Daftar Agenda Masuk"></asp:Label></h6> 
+                                            Text="Daftar Agenda Keluar"></asp:Label></h6> 
 							    </div>
 
                                 <div class="card-block">
@@ -128,7 +128,7 @@
                                     <asp:panel id="pnlInputData" runat="server" visible="false" >
                                         <div class="form-material m-t-0 row">
 							                <div class="form-group required col-md-3 m-t-30">
-                                                <label>Tanggal Terima</label>
+                                                <label>Tanggal</label>
                                                 <asp:TextBox ID="txtTanggal" runat="server" required=""  class="form-control form-control-line" ></asp:TextBox>
                                             </div>
 							                <div class="form-group required col-md-3 m-t-30">
@@ -157,8 +157,8 @@
                                                 <asp:TextBox ID="txtNoAgenda" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
                                             </div>
 							                <div class="form-group required col-md-6 m-t-30">
-                                                <label>Dari</label>
-                                                <asp:TextBox ID="txtDari" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
+                                                <label>Kepada</label>
+                                                <asp:TextBox ID="txtKepada" runat="server" required="" class="form-control form-control-line" ></asp:TextBox>
                                             </div>
 							                <div class="form-group required col-md-12 m-t-30">
                                                 <label>Perihal</label>
@@ -181,17 +181,6 @@
                                                 <asp:FileUpload ID="fuLamp3" runat="server" class="form-control form-control-line" />
                                             </div>
 
-										    <div class="form-group col-md-12 m-t-40 m-b-0">
-                                                <filter>Disposisi:</filter>
-										    </div>
-								            <div class="form-group col-md-6 m-t-30">
-									            <label>Disposisi Kepada:</label>
-                                                <asp:TextBox ID="txtDisposisiKe" runat="server" TextMode="MultiLine" Rows="8" class="form-control form-control-line" ></asp:TextBox>
-								            </div>
-							                <div class="form-group col-md-6 m-t-30">
-								                <label>Isi Disposisi</label>
-                                                <asp:TextBox ID="txtIsiDisposisi" runat="server" TextMode="MultiLine" Rows="8" class="form-control form-control-line" ></asp:TextBox>
-                                            </div>
                                             <div class="form-group col-md-12 m-t-30 m-b-30">
                                                 <asp:Button ID="btnSave" runat="server" Text="Simpan" class="btn btn-danger" type="submit" />
                                                 <asp:Button ID="btnCancel" runat="server" Text="Batal" class="btn btn-danger" CausesValidation ="false" formnovalidate="formnovalidate"  />
@@ -238,7 +227,7 @@
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="BtnEdit" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Ubah"   
+                                                                CommandArgument='<%#Eval("OutgoingID")%>' CommandName="Ubah"   
                                                                 ImageUrl="images/icon/edit.png" ToolTip="Edit Data" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
@@ -246,7 +235,7 @@
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="BtnDelete" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Hapus"   
+                                                                CommandArgument='<%#Eval("OutgoingID")%>' CommandName="Hapus"   
                                                                 ImageUrl="images/icon/delete.png" ToolTip="Delete Data" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
@@ -255,7 +244,7 @@
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="BtnLamp1" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Lampiran1"   
+                                                                CommandArgument='<%#Eval("OutgoingID")%>' CommandName="Lampiran1"   
                                                                 ImageUrl="images/icon/attachment.png" ToolTip="Lampiran 1" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
@@ -263,7 +252,7 @@
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="BtnLamp2" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Lampiran2"   
+                                                                CommandArgument='<%#Eval("OutgoingID")%>' CommandName="Lampiran2"   
                                                                 ImageUrl="images/icon/attachment.png" ToolTip="Lampiran 2" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
@@ -271,7 +260,7 @@
                                                     <asp:TemplateField>
                                                         <ItemTemplate>
                                                             <asp:ImageButton ID="BtnLamp3" runat="server" CausesValidation="False"  
-                                                                CommandArgument='<%#Eval("IncomingID")%>' CommandName="Lampiran3"   
+                                                                CommandArgument='<%#Eval("OutgoingID")%>' CommandName="Lampiran3"   
                                                                 ImageUrl="images/icon/attachment.png" ToolTip="Lampiran 3" />
                                                         </ItemTemplate>
                                                         <ItemStyle HorizontalAlign="Center" VerticalAlign="Middle" Width="20px" />
@@ -290,7 +279,7 @@
                                                     <asp:BoundField DataField="TanggalSurat" SortExpression="TanggalSurat" HeaderText="Tanggal Surat" DataFormatString="{0:d}" />
                                                     <asp:BoundField DataField="NoSurat" SortExpression="NoSurat" HeaderText="No. Surat" />
                                                     <asp:BoundField DataField="NoAgenda" SortExpression="NoAgenda" HeaderText="No. Agenda" />
-                                                    <asp:BoundField DataField="Dari" SortExpression="Dari" HeaderText="Dari" />
+                                                    <asp:BoundField DataField="Kepada" SortExpression="Kepada" HeaderText="Kepada" />
                                                     <asp:BoundField DataField="Perihal" SortExpression="Perihal" HeaderText="Perihal" />
 
                                                 </Columns>
@@ -354,6 +343,7 @@
     <script type="text/javascript" src="assets/plugins/moment/moment.js"></script>
 
 	<script type="text/javascript">
+	    // MAterial Date picker    
 	    $('#txtTanggal').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY', weekStart: 0, time: false });
 	    $('#txtTglSurat').bootstrapMaterialDatePicker({ format: 'DD/MM/YYYY', weekStart: 0, time: false });
 	</script>
