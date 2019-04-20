@@ -22,4 +22,3 @@ NO    NAMA                          NIM               AKUN GITHUB
 3.    Januar Ilham                  182022000002      januarilhami
 4.    Parera Jumano                 182022000012      parerajumano
 5.    Danil Satria                  181022000011      danielsatria1990
-
